@@ -2,12 +2,10 @@ import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import AddShoppingCartRoundedIcon from "@material-ui/icons/AddShoppingCartRounded";
 import ExposureRoundedIcon from "@material-ui/icons/ExposureRounded";
+import LibraryBooksRoundedIcon from '@material-ui/icons/LibraryBooksRounded';
 import React, {useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 
-// This function creates different classes,
-// or groups of styles that we can put on
-// any components that we want.
 const useStyles = makeStyles({
     bottomNavigation: {
         width: '100%',
@@ -43,6 +41,7 @@ const BottomNavigationMenu = () => {
                       showLabels>
         <BottomNavigationAction label={'Home'} value={'Home'} icon={<AddShoppingCartRoundedIcon/>} />
         <BottomNavigationAction label={'Upgrades'} value={'Upgrades'} icon={<ExposureRoundedIcon/>} />
+        <BottomNavigationAction label={'Inventory'} value={'Inventory'} icon={<LibraryBooksRoundedIcon/>} />
     </BottomNavigation>
 );
 };

@@ -1,14 +1,21 @@
 import React, {Fragment} from 'react';
 import Home from "./sections/home";
-import {CssBaseline} from "@material-ui/core";
+import {createMuiTheme, CssBaseline} from "@material-ui/core";
+import {ThemeProvider} from "@material-ui/styles";
 
-function App() {
+const theme = createMuiTheme({
+    palette: {
+        type: 'dark'
+    }
+});
+
+const App = () => {
   return (
-      <Fragment>
+      <ThemeProvider theme={theme}>
         <CssBaseline/>
         <Home/>
-      </Fragment>
+      </ThemeProvider>
   );
-}
+};
 
 export default App;

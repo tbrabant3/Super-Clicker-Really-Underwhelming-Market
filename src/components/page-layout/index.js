@@ -8,6 +8,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+// This component can be used as the parent to all main page components,
+// to allow for spacing and other css consistency.
 const PageLayout = ({children}) => {
     const classes = useStyles();
 

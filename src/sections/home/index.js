@@ -3,12 +3,13 @@ import BottomNavigationMenu from "../../components/bottom-navigation-menu";
 import Header from "../../components/header";
 import Typography from "@material-ui/core/Typography";
 import PageLayout from "../../components/page-layout";
+import ClickableImage from "../../components/clicker";
 
 const Home = () => {
 
     const ExampleComponent = () => (
-        <Typography variant={'h4'}>
-            {'This is an example component; Replace this with anything to see it in the main section!'}
+        <Typography variant={'h3'}>
+            {'SUPER CLICKER REALLY UNDERWHELMING MARKET'}
         </Typography>
     );
 
@@ -17,6 +18,7 @@ const Home = () => {
         <Fragment>
             <Header/>
             <PageLayout>
+                <ClickableImage/>
                 <ExampleComponent/>
             </PageLayout>
             <BottomNavigationMenu/>

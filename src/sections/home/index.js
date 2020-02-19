@@ -5,17 +5,16 @@ import PageLayout from "../../components/page-layout";
 import ClickableImage from "../../components/clicker";
 
 const Home = () => {
-
-    // The component Hierarchy to return.
-    return (
-        <Fragment>
-            <Header/>
-            <PageLayout>
-                <ClickableImage/>
-            </PageLayout>
-            <BottomNavigationMenu/>
-        </Fragment>
-    )
+	// The component Hierarchy to return.
+	return (
+		<Fragment>
+			<Header />
+			<PageLayout>
+				<ClickableImage />
+			</PageLayout>
+			<BottomNavigationMenu />
+		</Fragment>
+	);
 };
 
 export default Home;

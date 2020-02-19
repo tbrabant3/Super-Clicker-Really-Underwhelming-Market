@@ -13,11 +13,11 @@ const useStyles = makeStyles(theme => ({
 const PageLayout = ({ children }) => {
 	const classes = useStyles();
 
-    return (
-        <Grid container justify={'center'} className={classes.page}>
-            {children}
-        </Grid>
-    );
+	return (
+		<Grid container justify={'center'} className={classes.page}>
+			{children}
+		</Grid>
+	);
 };
 
 export default PageLayout;

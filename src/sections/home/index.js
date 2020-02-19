@@ -7,19 +7,12 @@ import ClickableImage from "../../components/clicker";
 
 const Home = () => {
 
-    const ExampleComponent = () => (
-        <Typography variant={'h3'}>
-            {'SUPER CLICKER REALLY UNDERWHELMING MARKET'}
-        </Typography>
-    );
-
     // The component Hierarchy to return.
     return (
         <Fragment>
             <Header/>
             <PageLayout>
                 <ClickableImage/>
-                <ExampleComponent/>
             </PageLayout>
             <BottomNavigationMenu/>
         </Fragment>

@@ -61,7 +61,7 @@ const Header = () => {
                         <MenuRoundedIcon/>
                     </IconButton>
                     <Typography variant={'h6'}>
-                        {'Home'}
+                        {'SUPER CLICKER REALLY UNDERWHELMING MARKET'}
                     </Typography>
                 </Toolbar>
             </AppBar>

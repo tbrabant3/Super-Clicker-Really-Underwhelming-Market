@@ -4,6 +4,8 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import ClickButton from './button';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -20,7 +22,8 @@ const ClickableImage = () => {
 	const ContentSection = () => (
 		<Grid container justify={'center'}>
 			<Grid container item justify={'center'} xs={12}>
-				<img src={require('../../images/murdermart.png')} alt="murdermart" />
+				{/*<img src={require('../../images/murdermart.png')} alt="murdermart" />*/}
+				<ClickButton />
 			</Grid>
 			<Grid container item justify={'center'} xs={12}>
 				<Typography variant={'h5'}>{count}</Typography>

@@ -3,10 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import ClickButton from './button';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		flexGrow: 1
+		flexGrow: 1,
+		padding: theme.spacing(1)
 	},
 	paper: {
 		padding: theme.spacing(2),
@@ -15,44 +17,30 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default function UpgradeGrid() {
+const UpgradeButton = ({ className, name }) => (
+	<Grid item>
+		<Button>
+			<Paper className={className}>{name}</Paper>
+		</Button>
+	</Grid>
+);
+
+const UpgradeGrid = () => {
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
-			<Grid container spacing={3}>
-				<Grid item xs={3}>
-					<Paper className={classes.paper}>Murder Mart</Paper>
-					<ClickButton />
-				</Grid>
-				<Grid item xs={3}>
-					<Paper className={classes.paper}>Kwik Stop</Paper>
-					<ClickButton />
-				</Grid>
-				<Grid item xs={3}>
-					<Paper className={classes.paper}>Hannafords</Paper>
-					<ClickButton />
-				</Grid>
-				<Grid item xs={3}>
-					<Paper className={classes.paper}>Price Chopper</Paper>
-					<ClickButton />
-				</Grid>
-				<Grid item xs={3}>
-					<Paper className={classes.paper}>Market 32</Paper>
-					<ClickButton />
-				</Grid>
-				<Grid item xs={3}>
-					<Paper className={classes.paper}>City Market</Paper>
-					<ClickButton />
-				</Grid>
-				<Grid item xs={3}>
-					<Paper className={classes.paper}>Whole Foods</Paper>
-					<ClickButton />
-				</Grid>
-				<Grid item xs={3}>
-					<Paper className={classes.paper}>Price Empire</Paper>
-					<ClickButton />
-				</Grid>
+			<Grid container spacing={1} justify={'center'}>
+				<UpgradeButton className={classes.paper} name={'Murder Mart'} />
+				<UpgradeButton className={classes.paper} name={'Kwik Stop'} />
+				<UpgradeButton className={classes.paper} name={'Hannafords'} />
+				<UpgradeButton className={classes.paper} name={'Price Chopper'} />
+				<UpgradeButton className={classes.paper} name={'Market 32'} />
+				<UpgradeButton className={classes.paper} name={'City Market'} />
+				<UpgradeButton className={classes.paper} name={'Whole Foods'} />
+				<UpgradeButton className={classes.paper} name={'Price Empire'} />
 			</Grid>
 		</div>
 	);
-}
+};
+
+export default UpgradeGrid;

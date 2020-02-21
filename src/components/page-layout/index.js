@@ -14,7 +14,7 @@ const PageLayout = ({ children }) => {
 	const classes = useStyles();
 
 	return (
-		<Grid container className={classes.page}>
+		<Grid container justify={'center'} className={classes.page}>
 			{children}
 		</Grid>
 	);

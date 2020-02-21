@@ -46,20 +46,8 @@ const Header = () => {
 
 	return (
 		<Fragment>
-			<Drawer open={drawerOpen} onClose={toggleDrawer}>
-				<LeftDrawer />
-			</Drawer>
 			<AppBar position={'static'}>
 				<Toolbar>
-					<IconButton
-						edge={'start'}
-						color={'inherit'}
-						className={classes.menuButton}
-						aria-label={'menu'}
-						onClick={toggleDrawer}
-					>
-						<MenuRoundedIcon />
-					</IconButton>
 					<Typography variant={'h6'}>
 						{'SUPER CLICKER REALLY UNDERWHELMING MARKET'}
 					</Typography>

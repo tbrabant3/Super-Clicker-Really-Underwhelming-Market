@@ -1,21 +1,29 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import BottomNavigationMenu from '../../components/bottom-navigation-menu';
 import Header from '../../components/header';
-import Typography from '@material-ui/core/Typography';
 import PageLayout from '../../components/page-layout';
 import ClickableImage from '../../components/clicker';
+import Upgrades from '../upgrades';
+import { connect, Provider } from 'react-redux';
 
-const Home = () => {
+const mapStateToProps = state => ({
+	coupons: state.CouponsReducer.coupons
+});
+
+const Home = ({ coupons }) => {
 	// The component Hierarchy to return.
+
+	const shouldShowUpgradesSection = coupons > 19;
+
 	return (
 		<Fragment>
 			<Header />
 			<PageLayout>
 				<ClickableImage />
+				{shouldShowUpgradesSection ? <Upgrades /> : null}
 			</PageLayout>
-			<BottomNavigationMenu />
 		</Fragment>
 	);
 };
 
-export default Home;
+export default connect(mapStateToProps)(Home);

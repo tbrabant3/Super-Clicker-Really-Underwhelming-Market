@@ -2,6 +2,10 @@ import React from 'react';
 import Home from './sections/home';
 import { createMuiTheme, CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+import reducers from './redux/reducers';
+import { save, load } from 'redux-localstorage-simple';
 
 // This theme overrides the palette's default theme to dark;
 // the themeProvider in the component bellow will be used to provide
@@ -12,11 +16,17 @@ const theme = createMuiTheme({
 	}
 });
 
+const createStoreWithMiddleware = applyMiddleware(save())(createStore);
+
+const store = createStoreWithMiddleware(reducers, load());
+
 const App = () => {
 	return (
 		<ThemeProvider theme={theme}>
-			<CssBaseline />
-			<Home />
+			<Provider store={store}>
+				<CssBaseline />
+				<Home />
+			</Provider>
 		</ThemeProvider>
 	);
 };

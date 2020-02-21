@@ -1,13 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import Typography from '@material-ui/core/Typography';
-
-const image = {
-	url: '../../images/murdermart.png',
-	title: 'murdermart',
-	width: '100%'
-};
+import image from '../../images/murdermart.png';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -18,11 +12,8 @@ const useStyles = makeStyles(theme => ({
 	},
 	image: {
 		position: 'relative',
-		height: 200,
-		[theme.breakpoints.down('xs')]: {
-			width: '100% !important', // Overrides inline-style
-			height: 100
-		},
+		height: theme.spacing(65),
+		width: theme.spacing(61),
 		'&:hover, &$focusVisible': {
 			zIndex: 1,
 			'& $imageBackdrop': {
@@ -36,8 +27,6 @@ const useStyles = makeStyles(theme => ({
 			}
 		}
 	},
-	focusVisible: {},
-
 	imageSrc: {
 		position: 'absolute',
 		left: 0,
@@ -46,16 +35,10 @@ const useStyles = makeStyles(theme => ({
 		bottom: 0,
 		backgroundSize: 'cover',
 		backgroundPosition: 'center 40%'
-	},
-
-	imageTitle: {
-		position: 'relative',
-		padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) +
-			6}px`
 	}
 }));
 
-export default function ClickButton() {
+const ClickButton = () => {
 	const classes = useStyles();
 
 	return (
@@ -64,17 +47,11 @@ export default function ClickButton() {
 				focusRipple
 				className={classes.image}
 				focusVisibleClassName={classes.focusVisible}
-				style={{
-					width: image.width
-				}}
 			>
-				<span
-					className={classes.imageSrc}
-					style={{
-						backgroundImage: `url(${image.url})`
-					}}
-				/>
+				<img src={image} className={classes.imageSrc} alt={'Murder Mart'} />
 			</ButtonBase>
 		</div>
 	);
-}
+};
+
+export default ClickButton;

@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const ClickButton = () => {
+const ClickButton = ({ onClick }) => {
 	const classes = useStyles();
 
 	return (
@@ -47,6 +47,7 @@ const ClickButton = () => {
 				focusRipple
 				className={classes.image}
 				focusVisibleClassName={classes.focusVisible}
+				onClick={onClick}
 			>
 				<img src={image} className={classes.imageSrc} alt={'Murder Mart'} />
 			</ButtonBase>

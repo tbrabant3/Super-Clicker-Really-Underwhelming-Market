@@ -26,7 +26,7 @@ const ClickableImage = ({ coupons, dispatch }) => {
 	const ContentSection = () => (
 		<Grid container justify={'center'}>
 			<Grid container item justify={'center'} xs={12}>
-				<ClickButton />
+				<ClickButton onClick={incrementCounter} />
 			</Grid>
 			<Grid container item justify={'center'} xs={12}>
 				<Typography variant={'h5'}>{coupons}</Typography>
@@ -35,7 +35,7 @@ const ClickableImage = ({ coupons, dispatch }) => {
 	);
 
 	return (
-		<Card className={classes.root} onClick={incrementCounter}>
+		<Card className={classes.root}>
 			<CardContent>
 				<ContentSection />
 			</CardContent>

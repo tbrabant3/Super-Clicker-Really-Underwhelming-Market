@@ -10,12 +10,15 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexWrap: 'wrap',
 		minWidth: 300,
-		width: '100%'
+		width: '100%',
+		backgroundImage:'url(/murdermart-background.png)'
 	},
 	image: {
 		position: 'relative',
 		height: theme.spacing(65),
 		width: theme.spacing(61),
+		transition: 'transform 0.1s',
+		transform: 'scale(1,1)',
 		'&:hover, &$focusVisible': {
 			zIndex: 1,
 			'& $imageBackdrop': {
@@ -27,6 +30,9 @@ const useStyles = makeStyles(theme => ({
 			'& $imageTitle': {
 				border: '4px solid currentColor'
 			}
+		},
+		'&:active': {
+			transform: 'scale(0.9, 0.9)'
 		}
 	},
 	imageSrc: {
@@ -46,7 +52,7 @@ const ClickButton = () => {
 	return (
 		<div className={classes.root}>
 			<ButtonBase
-				focusRipple
+				disableRipple
 				className={classes.image}
 				focusVisibleClassName={classes.focusVisible}
 			>

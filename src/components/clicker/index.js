@@ -1,25 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import ButtonBase from '@material-ui/core/ButtonBase';
 import ClickButton from './button';
 import { incrementCouponCount } from '../../redux/actions';
 import { connect } from 'react-redux';
+import CouponCounter from './coupon-counter';
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		minWidth: 275
+		minWidth: theme.spacing(10)
 	}
 }));
 
-const mapStateToProps = state => ({
-	coupons: state.CouponsReducer.coupons
-});
-
-const ClickableImage = ({ coupons, dispatch }) => {
+const ClickableImage = ({ dispatch }) => {
 	const classes = useStyles();
 	const incrementCounter = () => dispatch(incrementCouponCount());
 
@@ -29,7 +25,7 @@ const ClickableImage = ({ coupons, dispatch }) => {
 				<ClickButton onClick={incrementCounter} />
 			</Grid>
 			<Grid container item justify={'center'} xs={12}>
-				<Typography variant={'h5'}>{coupons}</Typography>
+				<CouponCounter />
 			</Grid>
 		</Grid>
 	);
@@ -43,4 +39,4 @@ const ClickableImage = ({ coupons, dispatch }) => {
 	);
 };
 
-export default connect(mapStateToProps)(ClickableImage);
+export default connect()(ClickableImage);

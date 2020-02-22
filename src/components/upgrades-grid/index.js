@@ -1,9 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import ClickButton from './button';
-import Button from '@material-ui/core/Button';
+import UpgradeButton from './upgrade-button';
+import {
+	UPGRADE_COUPON_BOOK,
+	UPGRADE_COUPON_FACTORY,
+	UPGRADE_COUPON_PRINTER,
+	UPGRADE_COUPON_STAMP,
+	UPGRADE_COUPON_STORE
+} from '../../constants/upgrades';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -17,27 +22,36 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const UpgradeButton = ({ className, name }) => (
-	<Grid item>
-		<Button>
-			<Paper className={className}>{name}</Paper>
-		</Button>
-	</Grid>
-);
-
 const UpgradeGrid = () => {
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
 			<Grid container spacing={1} justify={'center'}>
-				<UpgradeButton className={classes.paper} name={'Murder Mart'} />
-				<UpgradeButton className={classes.paper} name={'Kwik Stop'} />
-				<UpgradeButton className={classes.paper} name={'Hannafords'} />
-				<UpgradeButton className={classes.paper} name={'Price Chopper'} />
-				<UpgradeButton className={classes.paper} name={'Market 32'} />
-				<UpgradeButton className={classes.paper} name={'City Market'} />
-				<UpgradeButton className={classes.paper} name={'Whole Foods'} />
-				<UpgradeButton className={classes.paper} name={'Price Empire'} />
+				<UpgradeButton
+					className={classes.paper}
+					name={'Coupon Book'}
+					upgradeName={UPGRADE_COUPON_BOOK}
+				/>
+				<UpgradeButton
+					className={classes.paper}
+					name={'Coupon Stamp'}
+					upgradeName={UPGRADE_COUPON_STAMP}
+				/>
+				<UpgradeButton
+					className={classes.paper}
+					name={'Coupon Printer'}
+					upgradeName={UPGRADE_COUPON_PRINTER}
+				/>
+				<UpgradeButton
+					className={classes.paper}
+					name={'Coupon Store'}
+					upgradeName={UPGRADE_COUPON_STORE}
+				/>
+				<UpgradeButton
+					className={classes.paper}
+					name={'Coupon Factory'}
+					upgradeName={UPGRADE_COUPON_FACTORY}
+				/>
 			</Grid>
 		</div>
 	);

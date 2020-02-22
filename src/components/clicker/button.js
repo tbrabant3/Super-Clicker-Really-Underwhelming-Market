@@ -43,12 +43,7 @@ const ClickButton = ({ onClick }) => {
 
 	return (
 		<div className={classes.root}>
-			<ButtonBase
-				focusRipple
-				className={classes.image}
-				focusVisibleClassName={classes.focusVisible}
-				onClick={onClick}
-			>
+			<ButtonBase focusRipple className={classes.image} onClick={onClick}>
 				<img src={image} className={classes.imageSrc} alt={'Murder Mart'} />
 			</ButtonBase>
 		</div>

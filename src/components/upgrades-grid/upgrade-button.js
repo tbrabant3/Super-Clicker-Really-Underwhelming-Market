@@ -2,7 +2,7 @@ import { addUpgrade, subtractCouponAmount } from '../../redux/actions';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { COUPON_UPGRADE_COST_DICTIONARY } from '../../constants/upgrades';
 import { Snackbar } from '@material-ui/core';
@@ -17,9 +17,13 @@ const mapStateToProps = state => {
 const UpgradeButton = ({ dispatch, coupons, className, name, upgradeName }) => {
 	const upgradeAmount = COUPON_UPGRADE_COST_DICTIONARY[upgradeName];
 
+	const [snackbarOpen, setSnackbarOpen] = useState(false);
+	const toggleSnackbar = () => setSnackbarOpen(!snackbarOpen);
+
 	const onAddNewUpgrade = () => {
 		dispatch(subtractCouponAmount({ amount: upgradeAmount }));
 		dispatch(addUpgrade({ upgrade: upgradeName, amount: 1 }));
+		toggleSnackbar();
 	};
 
 	const addNewUpgradeIfEnoughCoupons = () => {
@@ -35,8 +39,12 @@ const UpgradeButton = ({ dispatch, coupons, className, name, upgradeName }) => {
 					<Paper className={className}>{name}</Paper>
 				</Button>
 			</Grid>
-			<Snackbar open={true} autoHideDuration={6000}>
-				<Typography variant={'h5'}>{'test'}</Typography>
+			<Snackbar
+				open={snackbarOpen}
+				autoHideDuration={1000}
+				onClose={toggleSnackbar}
+			>
+				<Typography variant={'h5'}>{name + ' Bought'}</Typography>
 			</Snackbar>
 		</Fragment>
 	);

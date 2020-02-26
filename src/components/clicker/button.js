@@ -1,8 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import image from '../../images/murdermart-forground.png';
-
+import image from '../../images/desk2.png';
 import GlCanvas from './glcanvas';
 
 const useStyles = makeStyles(theme => ({
@@ -46,17 +45,13 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const ClickButton = () => {
+const ClickButton = ({ onClick }) => {
 	const classes = useStyles();
 
 	return (
 		<div className={classes.root}>
-			<ButtonBase
-				disableRipple
-				className={classes.image}
-				focusVisibleClassName={classes.focusVisible}
-			>
-				<img src={image} className={classes.imageSrc} alt={'Murder Mart'} />
+			<ButtonBase focusRipple className={classes.image} onClick={onClick}>
+				<img src={image} className={classes.imageSrc} alt={'desk'} />
 				<GlCanvas></GlCanvas>
 			</ButtonBase>
 		</div>

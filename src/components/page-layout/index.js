@@ -15,7 +15,11 @@ const PageLayout = ({ children }) => {
 
 	return (
 		<Grid container justify={'center'} className={classes.page}>
-			{children}
+			{children.map((child, i) => (
+				<Grid item key={i}>
+					{child}
+				</Grid>
+			))}
 		</Grid>
 	);
 };

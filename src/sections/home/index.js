@@ -1,10 +1,9 @@
-import React, {Fragment} from 'react';
-import BottomNavigationMenu from '../../components/bottom-navigation-menu';
+import React, { Fragment } from 'react';
 import Header from '../../components/header';
 import PageLayout from '../../components/page-layout';
 import ClickableImage from '../../components/clicker';
 import Upgrades from '../upgrades';
-import { connect, Provider } from 'react-redux';
+import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
 	coupons: state.CouponsReducer.coupons

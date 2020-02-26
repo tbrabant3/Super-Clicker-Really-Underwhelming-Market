@@ -2,18 +2,22 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import image from '../../images/desk2.png';
+import GlCanvas from './glcanvas';
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		display: 'flex',
 		flexWrap: 'wrap',
 		minWidth: 300,
-		width: '100%'
+		width: '100%',
+		backgroundImage:'url(/murdermart-background.png)'
 	},
 	image: {
 		position: 'relative',
 		height: theme.spacing(65),
 		width: theme.spacing(61),
+		transition: 'transform 0.1s',
+		transform: 'scale(1,1)',
 		'&:hover, &$focusVisible': {
 			zIndex: 1,
 			'& $imageBackdrop': {
@@ -25,6 +29,9 @@ const useStyles = makeStyles(theme => ({
 			'& $imageTitle': {
 				border: '4px solid currentColor'
 			}
+		},
+		'&:active': {
+			transform: 'scale(0.9, 0.9)'
 		}
 	},
 	imageSrc: {
@@ -45,6 +52,7 @@ const ClickButton = ({ onClick }) => {
 		<div className={classes.root}>
 			<ButtonBase focusRipple className={classes.image} onClick={onClick}>
 				<img src={image} className={classes.imageSrc} alt={'desk'} />
+				<GlCanvas></GlCanvas>
 			</ButtonBase>
 		</div>
 	);

@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
+
+
+
 const ClickableImage = ({ dispatch }) => {
 	const classes = useStyles();
 	const incrementCounter = () => dispatch(incrementCouponCount());

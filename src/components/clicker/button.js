@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import image from '../../images/murdermart.png';
+import image from '../../images/desk2.png';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -44,7 +44,7 @@ const ClickButton = ({ onClick }) => {
 	return (
 		<div className={classes.root}>
 			<ButtonBase focusRipple className={classes.image} onClick={onClick}>
-				<img src={image} className={classes.imageSrc} alt={'Murder Mart'} />
+				<img src={image} className={classes.imageSrc} alt={'desk'} />
 			</ButtonBase>
 		</div>
 	);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import image from '../../images/desk2.png';
+import image from '../../images/desk1forground.png';
 import GlCanvas from './glcanvas';
 
 const useStyles = makeStyles(theme => ({
@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
 		flexWrap: 'wrap',
 		minWidth: 300,
 		width: '100%',
-		backgroundImage:'url(/murdermart-background.png)'
+		backgroundImage:'url(/desk1background.png)'
 	},
 	image: {
 		position: 'relative',
@@ -50,7 +50,7 @@ const ClickButton = ({ onClick }) => {
 
 	return (
 		<div className={classes.root}>
-			<ButtonBase focusRipple className={classes.image} onClick={onClick}>
+			<ButtonBase className={classes.image} onClick={onClick}>
 				<img src={image} className={classes.imageSrc} alt={'desk'} />
 				<GlCanvas></GlCanvas>
 			</ButtonBase>

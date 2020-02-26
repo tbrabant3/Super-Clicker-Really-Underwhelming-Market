@@ -67,6 +67,7 @@ const GLCanvas = ({ coupons }) => {
 		var attrBuffer = gl.ctx.createBuffer();
 
 		gl.ctx.enable(gl.ctx.BLEND);
+		gl.ctx.blendFunc(gl.ctx.SRC_ALPHA, gl.ctx.ONE_MINUS_SRC_ALPHA);
 
 		gl.ctx.bindBuffer(gl.ctx.ARRAY_BUFFER, attrBuffer);
 
@@ -76,7 +77,7 @@ const GLCanvas = ({ coupons }) => {
 		// Tell it to use our program (pair of shaders)
 		gl.ctx.useProgram(program);
 
-		const texture = loadTexture(gl.ctx, '/coupon.png');
+		const texture = loadTexture(gl.ctx, '/couponcutout.png');
 
 		gl.ctx.activeTexture(gl.ctx.TEXTURE0);
 		gl.ctx.bindTexture(gl.ctx.TEXTURE_2D, texture);

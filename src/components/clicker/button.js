@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import image from '../../images/desk1forground.png';
+import image from '../../images/desk1foreground.png';
 import GlCanvas from './glcanvas';
 
 const useStyles = makeStyles(theme => ({
@@ -10,13 +10,16 @@ const useStyles = makeStyles(theme => ({
 		flexWrap: 'wrap',
 		minWidth: 300,
 		width: '100%',
-		backgroundImage:'url(/desk1background.png)'
+		backgroundImage:'url(/desk1background.png)',
+		height: theme.spacing(65),
+		width: theme.spacing(61),
 	},
 	image: {
 		position: 'relative',
-		height: theme.spacing(65),
-		width: theme.spacing(61),
+	    width: '100%',
+    	height: '100%',
 		transition: 'transform 0.1s',
+		transformOrigin: 'center',
 		transform: 'scale(1,1)',
 		'&:hover, &$focusVisible': {
 			zIndex: 1,
@@ -50,7 +53,7 @@ const ClickButton = ({ onClick }) => {
 
 	return (
 		<div className={classes.root}>
-			<ButtonBase className={classes.image} onClick={onClick}>
+			<ButtonBase disableFocusRipple disableTouchRipple className={classes.image} onClick={onClick}>
 				<img src={image} className={classes.imageSrc} alt={'desk'} />
 				<GlCanvas></GlCanvas>
 			</ButtonBase>

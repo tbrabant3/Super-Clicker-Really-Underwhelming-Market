@@ -8,7 +8,7 @@ void main(){
 	
 	gl_Position=vec4(a_position,1.,1.);
 	
-	gl_PointSize=20.;
+	gl_PointSize=50.;
 	
 	v_rot=a_rot;
 }

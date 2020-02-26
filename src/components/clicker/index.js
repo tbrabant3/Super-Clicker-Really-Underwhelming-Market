@@ -26,7 +26,9 @@ const ClickableImage = ({ dispatch }) => {
 			<Grid container item justify={'center'} xs={12}>
 				<ClickButton onClick={incrementCounter} />
 			</Grid>
-			<Counter />
+			<Grid container item justify={'center'} xs={12}>
+				<CouponCounter />
+			</Grid>
 		</Grid>
 	);
 

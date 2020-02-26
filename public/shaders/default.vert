@@ -1,7 +1,8 @@
 attribute vec2 a_position;
+attribute float a_rot;
 
 uniform highp float u_time;
-varying lowp vec4 vColor;
+varying mediump float v_rot;
 
 void main(){
 	
@@ -9,5 +10,5 @@ void main(){
 	
 	gl_PointSize=20.;
 	
-	vColor=vec4(1,1,1,1);
+	v_rot=a_rot;
 }

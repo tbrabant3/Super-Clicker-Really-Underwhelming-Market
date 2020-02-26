@@ -10,14 +10,14 @@ const useStyles = makeStyles(theme => ({
 		flexWrap: 'wrap',
 		minWidth: 300,
 		width: '100%',
-		backgroundImage:'url(/desk1background.png)',
+		backgroundImage: 'url(/desk1background.png)',
 		height: theme.spacing(65),
-		width: theme.spacing(61),
+		width: theme.spacing(61)
 	},
 	image: {
 		position: 'relative',
-	    width: '100%',
-    	height: '100%',
+		width: '100%',
+		height: '100%',
 		transition: 'transform 0.1s',
 		transformOrigin: 'center',
 		transform: 'scale(1,1)',
@@ -53,7 +53,11 @@ const ClickButton = ({ onClick }) => {
 
 	return (
 		<div className={classes.root}>
-			<ButtonBase disableFocusRipple disableTouchRipple className={classes.image} onClick={onClick}>
+			<ButtonBase
+				disableTouchRipple
+				className={classes.image}
+				onClick={onClick}
+			>
 				<img src={image} className={classes.imageSrc} alt={'desk'} />
 				<GlCanvas></GlCanvas>
 			</ButtonBase>

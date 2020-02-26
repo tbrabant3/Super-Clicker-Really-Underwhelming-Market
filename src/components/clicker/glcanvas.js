@@ -14,9 +14,12 @@ const GLCanvas = ({ coupons }) => {
 	const velocities = useMemo(() => new Float32Array(400), []);
 	let gl = null;
 
-	const [counter, setCounter] = useState(0);
+	const [lastVal, setLastVal] = useState(coupons);
+	const [bufferIndex, setBufferIndex] = useState(0);
+
 	useEffect(() => {
-		spawn(2);
+		spawn(coupons-lastVal);
+		setLastVal(coupons);
 	}, [coupons]);
 	useEffect(() => {
 		gl = new GLManager(canvasRef.current);
@@ -25,25 +28,21 @@ const GLCanvas = ({ coupons }) => {
 			main();
 		});
 	}, []);
-
+	const COUPON_SPEED = 0.03;
 	const spawn = num => {
 		for (let i = 0; i < num; i++) {
-			let x = Math.random() - 0.5;
-			let y = Math.random() - 0.5;
+			const angle = Math.random() * Math.PI * 2;
+			
+			const index = (bufferIndex+i) % 200;
+			
+			attrBuffer[index * 3] = 0;
+			attrBuffer[index * 3 + 1] = 0;
+			attrBuffer[index * 3 + 2] = angle;
 
-			let mag = Math.sqrt(x * x + y * y);
-			x /= mag;
-			y /= mag;
-
-			attrBuffer[(counter + i) * 3] = 0;
-			attrBuffer[(counter + i) * 3 + 1] = 0;
-			attrBuffer[(counter + i) * 3 + 2] = Math.random();
-
-			velocities[(counter + i) * 2] = x / 40;
-			velocities[(counter + i) * 2 + 1] = y / 40;
+			velocities[index * 2] = Math.sin(angle) * COUPON_SPEED;
+			velocities[index * 2 + 1] = Math.cos(angle) * COUPON_SPEED;
 		}
-		setCounter((num + counter) % 200);
-		console.log(counter);
+		setBufferIndex((bufferIndex+num) % 200);
 	};
 
 	function setGeometry(gl) {
@@ -91,12 +90,12 @@ const GLCanvas = ({ coupons }) => {
 		var size = 2; // 2 components per iteration
 		var type = gl.ctx.FLOAT; // the data is 32bit floats
 		var normalize = false; // don't normalize the data
-		var stride = 0; // 0 = move forward size * sizeof(type) each iteration to get the next position
+		var stride = 12; // 0 = move forward size * sizeof(type) each iteration to get the next position
 
-		gl.ctx.vertexAttribPointer(positionLocation, size, type, normalize, 12, 0);
+		gl.ctx.vertexAttribPointer(positionLocation, size, type, normalize, stride, 0);
 
 		// Tell the attribute how to get data out of rot
-		gl.ctx.vertexAttribPointer(rotLocation, 1, type, normalize, 12, 8);
+		gl.ctx.vertexAttribPointer(rotLocation, 1, type, normalize, stride, 8);
 
 		//randomizeVelocities();
 

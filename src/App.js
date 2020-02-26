@@ -13,6 +13,9 @@ import { save, load } from 'redux-localstorage-simple';
 const theme = createMuiTheme({
 	palette: {
 		type: 'dark'
+	},
+	typography: {
+		fontFamily: "Bad-Handwriting"
 	}
 });
 

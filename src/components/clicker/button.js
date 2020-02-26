@@ -16,11 +16,10 @@ const useStyles = makeStyles(theme => ({
 	},
 	image: {
 		position: 'relative',
-		width: '100%',
-		height: '100%',
-		transition: 'transform 0.1s',
-		transformOrigin: 'center',
-		transform: 'scale(1,1)',
+	    width: '100%',
+    	height: '100%',
+	
+		
 		'&:hover, &$focusVisible': {
 			zIndex: 1,
 			'& $imageBackdrop': {
@@ -33,9 +32,7 @@ const useStyles = makeStyles(theme => ({
 				border: '4px solid currentColor'
 			}
 		},
-		'&:active': {
-			transform: 'scale(0.9, 0.9)'
-		}
+		
 	},
 	imageSrc: {
 		position: 'absolute',
@@ -43,8 +40,15 @@ const useStyles = makeStyles(theme => ({
 		right: 0,
 		top: 0,
 		bottom: 0,
+		userDrag: 'none',
 		backgroundSize: 'cover',
-		backgroundPosition: 'center 40%'
+		backgroundPosition: 'center 40%',
+		transform: 'scale(1,1)',
+		'&:active': {
+			transform: 'scale(0.9, 0.9)'
+		},
+		transition: 'transform 0.1s',
+		transformOrigin: 'center',
 	}
 }));
 

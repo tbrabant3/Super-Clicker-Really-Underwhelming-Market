@@ -13,11 +13,10 @@ void main(){
 	
 	tex_pos=2.*tex_pos-1.;
 	
-	tex_pos.x=tex_pos.x*c-tex_pos.y*s;
-	tex_pos.y=tex_pos.y*c+tex_pos.x*c;
+	vec2 rotatedPos = vec2(tex_pos.x*c-tex_pos.y*s, tex_pos.y*c+tex_pos.x*s);
 	
-	tex_pos=(tex_pos+1.)/2.;
-	vec4 color=texture2D(u_tex,tex_pos);
+	rotatedPos=(rotatedPos+1.)/2.;
+	vec4 color=texture2D(u_tex,rotatedPos);
 	
 	color*=color.a;
 	gl_FragColor=color;

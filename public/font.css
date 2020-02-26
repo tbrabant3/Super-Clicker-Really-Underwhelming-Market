@@ -1,0 +1,13 @@
+/* font converted using font-converter.net. thank you! */
+@font-face {
+  font-family: "Bad-Handwriting";
+  src: url("./fonts/BadHandwriting.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/BadHandwriting.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./fonts/BadHandwriting.otf") format("opentype"), /* Open Type Font */
+    url("./fonts/BadHandwriting.svg") format("svg"), /* Legacy iOS */
+    url("./fonts/BadHandwriting.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("./fonts/BadHandwriting.woff") format("woff"), /* Modern Browsers */
+    url("./fonts/BadHandwriting.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}

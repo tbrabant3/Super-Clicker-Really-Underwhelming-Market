@@ -7,10 +7,7 @@ import ClickButton from './button';
 import { addCouponAmount, incrementCouponCount } from '../../redux/actions';
 import { connect } from 'react-redux';
 import CouponCounter from './coupon-counter';
-import {
-	COUPON_UPGRADE_ADDS_DICTIONARY,
-	UPGRADE_COUPON_BOOK
-} from '../../constants/upgrades';
+import * as Upgrades from '../../constants/upgrades';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -20,18 +17,64 @@ const useStyles = makeStyles(theme => ({
 
 const mapStateToProps = state => {
 	return {
-		books: state.UpgradesReducer.upgrades[UPGRADE_COUPON_BOOK]
+		rusty: state.UpgradesReducer.upgrades[Upgrades.UPGRADE_RUSTY_SCISSORS],
+		good: state.UpgradesReducer.upgrades[Upgrades.UPGRADE_GOOD_SCISSORS],
+		ambi:
+			state.UpgradesReducer.upgrades[Upgrades.UPGRADE_AMBIDEXTROUS_SCISSORS],
+		indus: state.UpgradesReducer.upgrades[Upgrades.UPGRADE_INDUSTRIAL_SCISSORS],
+		cerem: state.UpgradesReducer.upgrades[Upgrades.UPGRADE_CEREMONIAL_SCISSORS],
+		magic:
+			state.UpgradesReducer.upgrades[Upgrades.UPGRADE_SLIGHT_MAGIC_SCISSORS],
+		mythic: state.UpgradesReducer.upgrades[Upgrades.UPGRADE_MYTHICAL_SCISSORS]
 	};
 };
 
-const ClickableImage = ({ dispatch, books }) => {
+const ClickableImage = ({
+	dispatch,
+	rusty,
+	good,
+	ambi,
+	indus,
+	cerem,
+	magic,
+	mythic
+}) => {
 	const classes = useStyles();
 
-	const numberOfCouponsToAdd =
-		Math.round(books * COUPON_UPGRADE_ADDS_DICTIONARY[UPGRADE_COUPON_BOOK]) + 1;
+	const CouponsToAdd =
+		Math.round(
+			rusty *
+				Upgrades.COUPON_UPGRADE_ADDS_DICTIONARY[
+					Upgrades.UPGRADE_RUSTY_SCISSORS
+				] +
+				good *
+					Upgrades.COUPON_UPGRADE_ADDS_DICTIONARY[
+						Upgrades.UPGRADE_GOOD_SCISSORS
+					] +
+				ambi *
+					Upgrades.COUPON_UPGRADE_ADDS_DICTIONARY[
+						Upgrades.UPGRADE_AMBIDEXTROUS_SCISSORS
+					] +
+				indus *
+					Upgrades.COUPON_UPGRADE_ADDS_DICTIONARY[
+						Upgrades.UPGRADE_INDUSTRIAL_SCISSORS
+					] +
+				cerem *
+					Upgrades.COUPON_UPGRADE_ADDS_DICTIONARY[
+						Upgrades.UPGRADE_CEREMONIAL_SCISSORS
+					] +
+				magic *
+					Upgrades.COUPON_UPGRADE_ADDS_DICTIONARY[
+						Upgrades.UPGRADE_SLIGHT_MAGIC_SCISSORS
+					] +
+				mythic *
+					Upgrades.COUPON_UPGRADE_ADDS_DICTIONARY[
+						Upgrades.UPGRADE_MYTHICAL_SCISSORS
+					]
+		) + 1;
 
 	const incrementCounter = () =>
-		dispatch(addCouponAmount({ amount: numberOfCouponsToAdd }));
+		dispatch(addCouponAmount({ amount: CouponsToAdd }));
 
 	const ContentSection = () => (
 		<Grid container justify={'center'}>

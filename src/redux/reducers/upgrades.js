@@ -1,19 +1,21 @@
 import { ADD_NEW_UPGRADE, REMOVE_UPGRADE } from '../actions/actions';
-import {
-	UPGRADE_COUPON_BOOK,
-	UPGRADE_COUPON_FACTORY,
-	UPGRADE_COUPON_PRINTER,
-	UPGRADE_COUPON_STAMP,
-	UPGRADE_COUPON_STORE
-} from '../../constants/upgrades';
+import * as Upgrades from '../../constants/upgrades';
 
 const initialState = {
 	upgrades: {
-		[UPGRADE_COUPON_BOOK]: 0,
-		[UPGRADE_COUPON_STAMP]: 0,
-		[UPGRADE_COUPON_PRINTER]: 0,
-		[UPGRADE_COUPON_STORE]: 0,
-		[UPGRADE_COUPON_FACTORY]: 0
+		[Upgrades.UPGRADE_COUPON_BOOK]: 0,
+		[Upgrades.UPGRADE_COUPON_STAMP]: 0,
+		[Upgrades.UPGRADE_COUPON_PRINTER]: 0,
+		[Upgrades.UPGRADE_COUPON_STORE]: 0,
+		[Upgrades.UPGRADE_COUPON_FACTORY]: 0,
+		[Upgrades.UPGRADE_COUPON_CORPORATION]: 0,
+		[Upgrades.UPGRADE_RUSTY_SCISSORS]: 0,
+		[Upgrades.UPGRADE_GOOD_SCISSORS]: 0,
+		[Upgrades.UPGRADE_AMBIDEXTROUS_SCISSORS]: 0,
+		[Upgrades.UPGRADE_INDUSTRIAL_SCISSORS]: 0,
+		[Upgrades.UPGRADE_CEREMONIAL_SCISSORS]: 0,
+		[Upgrades.UPGRADE_SLIGHT_MAGIC_SCISSORS]: 0,
+		[Upgrades.UPGRADE_MYTHICAL_SCISSORS]: 0
 	}
 };
 

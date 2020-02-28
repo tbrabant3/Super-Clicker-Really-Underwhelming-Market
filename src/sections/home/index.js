@@ -4,6 +4,7 @@ import PageLayout from '../../components/page-layout';
 import ClickableImage from '../../components/clicker';
 import Upgrades from '../upgrades';
 import { connect } from 'react-redux';
+import CountIncrease from '../../components/upgrades-per-second';
 
 const mapStateToProps = state => ({
 	coupons: state.CouponsReducer.coupons
@@ -20,6 +21,7 @@ const Home = ({ coupons }) => {
 			<PageLayout>
 				<ClickableImage />
 				{shouldShowUpgradesSection ? <Upgrades /> : null}
+				<CountIncrease />
 			</PageLayout>
 		</Fragment>
 	);

@@ -1,9 +1,24 @@
-import React from 'react';
-import UpgradeGrid from '../../components/upgrades-grid';
+import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
+import CouponsPerClick from '../../components/upgrades-grid/coupons-per-click';
+import CouponsPerSecond from '../../components/upgrades-grid/coupons-per-second';
 
-const Upgrades = () => {
+const mapStateToProps = state => ({
+	coupons: state.CouponsReducer.coupons
+});
+
+const Upgrades = ({ coupons }) => {
 	// The component Hierarchy to return.
-	return <UpgradeGrid />;
+
+	const shouldShowCouponsPerClick = coupons > 19;
+	const shouldShowCouponsSecond = coupons > 999;
+
+	return (
+		<Fragment>
+			{shouldShowCouponsPerClick ? <CouponsPerClick /> : null}
+			{shouldShowCouponsSecond ? <CouponsPerSecond /> : null}
+		</Fragment>
+	);
 };
 
-export default Upgrades;
+export default connect(mapStateToProps)(Upgrades);

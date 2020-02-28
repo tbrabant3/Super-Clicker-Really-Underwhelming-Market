@@ -9,17 +9,15 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexWrap: 'wrap',
 		minWidth: 300,
-		width: '100%',
 		backgroundImage: 'url(/desk1background.png)',
 		height: theme.spacing(65),
 		width: theme.spacing(61)
 	},
 	image: {
 		position: 'relative',
-	    width: '100%',
-    	height: '100%',
-	
-		
+		width: '100%',
+		height: '100%',
+
 		'&:hover, &$focusVisible': {
 			zIndex: 1,
 			'& $imageBackdrop': {
@@ -31,8 +29,7 @@ const useStyles = makeStyles(theme => ({
 			'& $imageTitle': {
 				border: '4px solid currentColor'
 			}
-		},
-		
+		}
 	},
 	imageSrc: {
 		position: 'absolute',
@@ -48,7 +45,7 @@ const useStyles = makeStyles(theme => ({
 			transform: 'scale(0.9, 0.9)'
 		},
 		transition: 'transform 0.1s',
-		transformOrigin: 'center',
+		transformOrigin: 'center'
 	}
 }));
 

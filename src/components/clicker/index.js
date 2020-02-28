@@ -4,7 +4,7 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ClickButton from './button';
-import { addCouponAmount, incrementCouponCount } from '../../redux/actions';
+import { addCouponAmount } from '../../redux/actions';
 import { connect } from 'react-redux';
 import CouponCounter from './coupon-counter';
 import * as Upgrades from '../../constants/upgrades';

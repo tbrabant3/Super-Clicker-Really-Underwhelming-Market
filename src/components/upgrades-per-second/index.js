@@ -22,7 +22,7 @@ const CountIncrease = ({ dispatch, books, stamps, printers }) => {
 			dispatch(addCouponAmount({ amount: books + stamps + printers }));
 		}, 1000);
 		return () => clearInterval(interval);
-	}, [books, stamps, printers]);
+	}, [books]);
 
 	useEffect(() => {
 		const interval = setInterval(() => {

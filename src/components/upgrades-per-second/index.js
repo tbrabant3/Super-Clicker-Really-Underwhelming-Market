@@ -15,30 +15,19 @@ const mapStateToProps = state => {
 	};
 };
 
-const CountIncrease = ({ dispatch, books, stamps, printers }) => {
-
+const IncreaseOverTime = ({ dispatch, books, stamps, printers }) => {
 	useEffect(() => {
-		const interval = setInterval(() => {
-			dispatch(addCouponAmount({ amount: books + stamps + printers }));
-		}, 1000);
-		return () => clearInterval(interval);
-	}, [books, stamps, printers]);
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			dispatch(addCouponAmount({ amount: stamps * 5 }));
-		}, 1000);
-		return () => clearInterval(interval);
-	}, [stamps]);
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			dispatch(addCouponAmount({ amount: printers * 10 }));
-		}, 1000);
-		return () => clearInterval(interval);
-	}, [printers]);
+		const timer = setInterval(
+			() =>
+				dispatch(
+					addCouponAmount({ amount: books + stamps * 2 + printers * 3 })
+				),
+			500
+		);
+		return () => clearTimeout(timer);
+	});
 
 	return null;
 };
 
-export default connect(mapStateToProps)(CountIncrease);
+export default connect(mapStateToProps)(IncreaseOverTime);

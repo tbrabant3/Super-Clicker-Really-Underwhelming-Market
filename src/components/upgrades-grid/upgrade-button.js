@@ -35,9 +35,16 @@ const UpgradeButton = ({ dispatch, coupons, className, name, upgradeName }) => {
 	return (
 		<Fragment>
 			<Grid item>
-				<Button onClick={addNewUpgradeIfEnoughCoupons}>
-					<Paper className={className}>{name}</Paper>
-				</Button>
+				<Grid item>
+					<Button onClick={addNewUpgradeIfEnoughCoupons}>
+						<Paper className={className}>{name}</Paper>
+					</Button>
+				</Grid>
+				<Grid item container justify={'center'}>
+					<Typography variant={'5'}>
+						{'test'}
+					</Typography>
+				</Grid>
 			</Grid>
 			<Snackbar
 				open={snackbarOpen}

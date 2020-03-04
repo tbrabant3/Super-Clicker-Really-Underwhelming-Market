@@ -1,20 +1,19 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import image from '../../images/desk1foreground.png';
+import SimpleButton from './simple-button';
 import GlCanvas from './glcanvas';
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		display: 'flex',
 		flexWrap: 'wrap',
-		minWidth: 300,
+		minWidth: theme.spacing(20),
 		backgroundImage: 'url(/desk1background.png)',
 		height: theme.spacing(65),
 		width: theme.spacing(61)
 	},
 	image: {
-		position: 'relative',
+		position: 'absolute',
 		width: '100%',
 		height: '100%',
 
@@ -54,14 +53,8 @@ const ClickButton = ({ onClick }) => {
 
 	return (
 		<div className={classes.root}>
-			<ButtonBase
-				disableTouchRipple
-				className={classes.image}
-				onClick={onClick}
-			>
-				<img src={image} className={classes.imageSrc} alt={'desk'} />
-				<GlCanvas></GlCanvas>
-			</ButtonBase>
+			<SimpleButton onClick={onClick} />
+			<GlCanvas></GlCanvas>
 		</div>
 	);
 };

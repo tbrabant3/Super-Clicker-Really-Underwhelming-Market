@@ -27,36 +27,43 @@ const CouponsPerClick = () => {
 					className={classes.paper}
 					name={'Rusty Scissors'}
 					upgradeName={Constants.UPGRADE_RUSTY_SCISSORS}
+					upgradeCost={Constants.UPGRADE_RUSTY_SCISSORS_COST}
 				/>
 				<UpgradeButton
 					className={classes.paper}
 					name={'Good Scissors'}
 					upgradeName={Constants.UPGRADE_GOOD_SCISSORS}
+					upgradeCost={Constants.UPGRADE_GOOD_SCISSORS_COST}
 				/>
 				<UpgradeButton
 					className={classes.paper}
 					name={'Ambidextrous Scissors'}
 					upgradeName={Constants.UPGRADE_AMBIDEXTROUS_SCISSORS}
+					upgradeCost={Constants.UPGRADE_AMBIDEXTROUS_SCISSORS_COST}
 				/>
 				<UpgradeButton
 					className={classes.paper}
 					name={'Industrial Strength Scissors'}
 					upgradeName={Constants.UPGRADE_INDUSTRIAL_SCISSORS}
+					upgradeCost={Constants.UPGRADE_INDUSTRIAL_SCISSORS_COST}
 				/>
 				<UpgradeButton
 					className={classes.paper}
 					name={'Giant Ceremonial Scissors'}
 					upgradeName={Constants.UPGRADE_CEREMONIAL_SCISSORS}
+					upgradeCost={Constants.UPGRADE_CEREMONIAL_SCISSORS_COST}
 				/>
 				<UpgradeButton
 					className={classes.paper}
 					name={'Slightly Magical Scissors'}
 					upgradeName={Constants.UPGRADE_SLIGHT_MAGIC_SCISSORS}
+					upgradeCost={Constants.UPGRADE_SLIGHT_MAGIC_SCISSORS_COST}
 				/>
 				<UpgradeButton
 					className={classes.paper}
 					name={'Mythical Scissors'}
 					upgradeName={Constants.UPGRADE_MYTHICAL_SCISSORS}
+					upgradeCost={Constants.UPGRADE_MYTHICAL_SCISSORS_COST}
 				/>
 			</Grid>
 		</div>

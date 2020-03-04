@@ -14,7 +14,7 @@ const PageLayout = ({ children }) => {
 	const classes = useStyles();
 
 	return (
-		<Grid container justify={'center'} className={classes.page}>
+		<Grid container className={classes.page}>
 			{children.map((child, i) => (
 				<Grid item key={i}>
 					{child}

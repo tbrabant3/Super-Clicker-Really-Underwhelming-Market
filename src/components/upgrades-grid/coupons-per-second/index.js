@@ -1,9 +1,11 @@
 import UpgradeButton from '../upgrade-button';
 import * as Constants from '../../../constants/upgrades';
 import Grid from '@material-ui/core/Grid';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import { COUPONS_PER_SECOND_SECTION_MINIMUM } from '../../../constants/upgrades';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -17,47 +19,64 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const CouponsPerSecond = () => {
+const mapStateToProps = state => ({
+	coupons: state.CouponsReducer.coupons
+});
+
+const CouponsPerSecond = ({ coupons }) => {
 	const classes = useStyles();
 
+	const shouldShowCouponsSecond = coupons > COUPONS_PER_SECOND_SECTION_MINIMUM;
+
 	return (
-		<div className={classes.root}>
-			<Typography variant={'h6'}>{'Coupons Per Second Upgrades'}</Typography>
-			<Grid container spacing={1} justify={'center'}>
-				<UpgradeButton
-					className={classes.paper}
-					name={'Coupon Book'}
-					upgradeName={Constants.UPGRADE_COUPON_BOOK}
-				/>
-				<UpgradeButton
-					className={classes.paper}
-					name={'Coupon Stamp'}
-					upgradeName={Constants.UPGRADE_COUPON_STAMP}
-				/>
-				<UpgradeButton
-					className={classes.paper}
-					name={'Coupon Printer'}
-					upgradeName={Constants.UPGRADE_COUPON_PRINTER}
-				/>
-				<UpgradeButton
-					className={classes.paper}
-					name={'Coupon Store'}
-					upgradeName={Constants.UPGRADE_COUPON_STORE}
-				/>
-				<UpgradeButton
-					className={classes.paper}
-					name={'Coupon Factory'}
-					upgradeName={Constants.UPGRADE_COUPON_FACTORY}
-				/>
-				<UpgradeButton
-					className={classes.paper}
-					name={'Coupon Corporation'}
-					upgradeName={Constants.UPGRADE_COUPON_CORPORATION}
-				/>
-			</Grid>
-		</div>
+		<Grid item xs={12} md={3} className={classes.root}>
+			{shouldShowCouponsSecond && (
+				<Fragment>
+					<Typography variant={'h6'}>
+						{'Coupons Per Second Upgrades'}
+					</Typography>
+					<Grid
+						container
+						spacing={1}
+						justify={'center'}
+						direction={'column'}
+						alignItems={'stretch'}
+					>
+						<UpgradeButton
+							className={classes.paper}
+							name={'Coupon Book'}
+							upgradeName={Constants.UPGRADE_COUPON_BOOK}
+						/>
+						<UpgradeButton
+							className={classes.paper}
+							name={'Coupon Stamp'}
+							upgradeName={Constants.UPGRADE_COUPON_STAMP}
+						/>
+						<UpgradeButton
+							className={classes.paper}
+							name={'Coupon Printer'}
+							upgradeName={Constants.UPGRADE_COUPON_PRINTER}
+						/>
+						<UpgradeButton
+							className={classes.paper}
+							name={'Coupon Store'}
+							upgradeName={Constants.UPGRADE_COUPON_STORE}
+						/>
+						<UpgradeButton
+							className={classes.paper}
+							name={'Coupon Factory'}
+							upgradeName={Constants.UPGRADE_COUPON_FACTORY}
+						/>
+						<UpgradeButton
+							className={classes.paper}
+							name={'Coupon Corporation'}
+							upgradeName={Constants.UPGRADE_COUPON_CORPORATION}
+						/>
+					</Grid>
+				</Fragment>
+			)}
+		</Grid>
 	);
 };
 
-export default CouponsPerSecond;
-
+export default connect(mapStateToProps)(CouponsPerSecond);

@@ -12,10 +12,8 @@ const Home = () => {
 		<Fragment>
 			<Header />
 			<CountIncrease />
-			<PageLayout>
-				<ClickableImage />
+
 				<Upgrades />
-			</PageLayout>
 		</Fragment>
 	);
 };

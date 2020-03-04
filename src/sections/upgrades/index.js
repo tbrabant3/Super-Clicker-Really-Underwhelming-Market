@@ -1,28 +1,23 @@
 import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
 import CouponsPerClick from '../../components/upgrades-grid/coupons-per-click';
 import CouponsPerSecond from '../../components/upgrades-grid/coupons-per-second';
-import {
-	COUPONS_PER_CLICK_SECTION_MINIMUM,
-	COUPONS_PER_SECOND_SECTION_MINIMUM
-} from '../../constants/upgrades';
+import Grid from '@material-ui/core/Grid';
+import ClickableImage from '../../components/clicker';
+import { useMediaQuery, useTheme } from '@material-ui/core';
 
-const mapStateToProps = state => ({
-	coupons: state.CouponsReducer.coupons
-});
-
-const Upgrades = ({ coupons }) => {
+const Upgrades = () => {
 	// The component Hierarchy to return.
 
-	const shouldShowCouponsPerClick = coupons > COUPONS_PER_CLICK_SECTION_MINIMUM;
-	const shouldShowCouponsSecond = coupons > COUPONS_PER_SECOND_SECTION_MINIMUM;
+	const theme = useTheme();
+	const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
 	return (
-		<Fragment>
-			{shouldShowCouponsPerClick ? <CouponsPerClick /> : null}
-			{shouldShowCouponsSecond ? <CouponsPerSecond /> : null}
-		</Fragment>
+		<Grid container>
+			{matches ? <ClickableImage /> : <CouponsPerClick />}
+			{matches ? <CouponsPerClick /> : <ClickableImage />}
+			<CouponsPerSecond />
+		</Grid>
 	);
 };
 
-export default connect(mapStateToProps)(Upgrades);
+export default Upgrades;

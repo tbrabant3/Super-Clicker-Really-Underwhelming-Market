@@ -20,10 +20,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const mapStateToProps = state => ({
-	coupons: state.CouponsReducer.coupons
+	coupons: state.CouponsReducer.coupons,
+	upgrades: state.UpgradesReducer.upgrades
 });
 
-const CouponsPerSecond = ({ coupons }) => {
+const CouponsPerSecond = ({ coupons, upgrades }) => {
 	const classes = useStyles();
 
 	const shouldShowCouponsSecond = coupons > COUPONS_PER_SECOND_SECTION_MINIMUM;
@@ -47,36 +48,42 @@ const CouponsPerSecond = ({ coupons }) => {
 							name={'Coupon Book'}
 							upgradeName={Constants.UPGRADE_COUPON_BOOK}
 							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_COUPON_BOOK]}
+							numOwned={upgrades[Constants.UPGRADE_COUPON_BOOK]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Coupon Stamp'}
 							upgradeName={Constants.UPGRADE_COUPON_STAMP}
 							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_COUPON_STAMP]}
+							numOwned={upgrades[Constants.UPGRADE_COUPON_STAMP]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Coupon Printer'}
 							upgradeName={Constants.UPGRADE_COUPON_PRINTER}
 							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_COUPON_PRINTER]}
+							numOwned={upgrades[Constants.UPGRADE_COUPON_PRINTER]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Coupon Store'}
 							upgradeName={Constants.UPGRADE_COUPON_STORE}
 							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_COUPON_STORE]}
+							numOwned={upgrades[Constants.UPGRADE_COUPON_STORE]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Coupon Factory'}
 							upgradeName={Constants.UPGRADE_COUPON_FACTORY}
 							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_COUPON_FACTORY]}
+							numOwned={upgrades[Constants.UPGRADE_COUPON_FACTORY]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Coupon Corporation'}
 							upgradeName={Constants.UPGRADE_COUPON_CORPORATION}
 							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_COUPON_CORPORATION]}
+							numOwned={upgrades[Constants.UPGRADE_COUPON_CORPORATION]}
 						/>
 					</Grid>
 				</Fragment>

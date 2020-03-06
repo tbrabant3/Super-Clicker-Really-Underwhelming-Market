@@ -22,7 +22,8 @@ const UpgradeButton = ({
 	name,
 	upgradeName,
 	upgradeCost,
-	upgrades
+	upgrades,
+	numOwned
 }) => {
 	let upgradeAmount = Math.round(
 		Upgrades.COUPON_UPGRADE_BASE_COST_DICTIONARY[upgradeName] +
@@ -54,6 +55,7 @@ const UpgradeButton = ({
 				<Button onClick={addNewUpgradeIfEnoughCoupons}>
 					<Paper className={className}>{name}</Paper>
 				</Button>
+				<Typography variant={'5'}>{numOwned}</Typography>
 				<Typography variant={'5'}>{upgradeCost}</Typography>
 			</Grid>
 			<Snackbar

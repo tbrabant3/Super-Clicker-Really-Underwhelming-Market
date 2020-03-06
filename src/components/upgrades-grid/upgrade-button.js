@@ -4,11 +4,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import {
-	COUPON_UPGRADE_COST_DICTIONARY,
-	COUPON_UPGRADE_BASE_COST_DICTIONARY,
-	default as Costs
-} from '../../constants/upgrades';
+import * as Upgrades from '../../constants/upgrades';
 import { Snackbar } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
@@ -29,9 +25,9 @@ const UpgradeButton = ({
 	upgrades
 }) => {
 	let upgradeAmount = Math.round(
-		(COUPON_UPGRADE_BASE_COST_DICTIONARY[upgradeName] +
-		(1.6 * upgrades[upgradeName])));
-	COUPON_UPGRADE_COST_DICTIONARY[upgradeName] = upgradeAmount;
+		Upgrades.COUPON_UPGRADE_BASE_COST_DICTIONARY[upgradeName] +
+		Math.pow(Upgrades.COUPON_UPGRADE_INCREASE_DICTIONARY[upgradeName], upgrades[upgradeName]));
+	Upgrades.COUPON_UPGRADE_COST_DICTIONARY[upgradeName] = upgradeAmount;
 	const [snackbarOpen, setSnackbarOpen] = useState(false);
 	const toggleSnackbar = () => setSnackbarOpen(!snackbarOpen);
 

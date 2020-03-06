@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import * as Upgrades from '../../constants/upgrades';
 import { addCouponAmount } from '../../redux/actions';
 import { connect } from 'react-redux';
-import {UPGRADE_COUPON_STORE} from "../../constants/upgrades";
+import { UPGRADE_COUPON_STORE } from '../../constants/upgrades';
 
 const mapStateToProps = state => {
 	return {

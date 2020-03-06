@@ -5,7 +5,6 @@ import CountIncrease from '../../components/upgrades-per-second';
 import Modal from '@material-ui/core/Modal';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
-import { Collapse, Slide } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
 	paper: {

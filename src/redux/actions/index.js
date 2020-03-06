@@ -3,7 +3,8 @@ import {
 	ADD_NEW_UPGRADE,
 	INCREMENT_COUPON_COUNT,
 	REMOVE_UPGRADE,
-	SUBTRACT_COUPON_AMOUNT
+	SUBTRACT_COUPON_AMOUNT,
+	SET_COUPONS_PER_SECOND
 } from './actions';
 
 export const incrementCouponCount = () => ({
@@ -29,5 +30,10 @@ export const addUpgrade = ({ upgrade, amount }) => ({
 export const removeUpgrade = ({ upgrade, amount }) => ({
 	type: REMOVE_UPGRADE,
 	upgrade,
+	amount
+});
+
+export const setCouponsPerSecond = ({ amount }) => ({
+	type: SET_COUPONS_PER_SECOND,
 	amount
 });

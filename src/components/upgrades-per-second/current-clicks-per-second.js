@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Upgrades from '../../constants/upgrades';
+import { setCouponsPerSecond } from '../../redux/actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
@@ -15,6 +16,7 @@ const mapStateToProps = state => {
 };
 
 export const clicksPerSecond = ({
+	dispatch,
 	books,
 	stamps,
 	printers,
@@ -22,15 +24,19 @@ export const clicksPerSecond = ({
 	factory,
 	corporation
 }) => {
-	return {
-		amount:
-			books * Upgrades.UPGRADE_COUPON_BOOK_ADDS +
-			stamps * Upgrades.UPGRADE_COUPON_STAMP_ADDS +
-			printers * Upgrades.UPGRADE_COUPON_PRINTER_ADS +
-			store * Upgrades.UPGRADE_COUPON_STORE_ADDS +
-			factory * Upgrades.UPGRADE_COUPON_FACTORY_ADDS +
-			corporation * Upgrades.UPGRADE_COUPON_CORPORATION_ADDS
-	};
+	dispatch(
+		setCouponsPerSecond({
+			amount:
+				books * Upgrades.UPGRADE_COUPON_BOOK_ADDS +
+				stamps * Upgrades.UPGRADE_COUPON_STAMP_ADDS +
+				printers * Upgrades.UPGRADE_COUPON_PRINTER_ADS +
+				store * Upgrades.UPGRADE_COUPON_STORE_ADDS +
+				factory * Upgrades.UPGRADE_COUPON_FACTORY_ADDS +
+				corporation * Upgrades.UPGRADE_COUPON_CORPORATION_ADDS
+		})
+	);
+
+	return null;
 };
 
 export default connect(mapStateToProps)(clicksPerSecond);

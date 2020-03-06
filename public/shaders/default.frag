@@ -1,6 +1,7 @@
 
 varying mediump float v_rot;
 varying mediump vec2 v_sprite;
+varying mediump vec3 v_color;
 
 precision mediump float;
 uniform highp float u_time;
@@ -21,7 +22,8 @@ void main(){
 	
 	vec4 color=texture2D(u_tex,(rotatedPos+v_sprite)/imgSize);
 	
-	color*=color.a;
+	color*=vec4(v_color,1.);
+	//color*=color.a;
 	gl_FragColor=color;
 	
 }

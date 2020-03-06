@@ -7,8 +7,8 @@ const mapStateToProps = state => ({
 	coupons: state.CouponsReducer.coupons
 });
 
-const BUFFER_SIZE = 400;
-const GL_OBJECT_SIZE = 6;
+const BUFFER_SIZE = 900;
+const GL_OBJECT_SIZE = 9;
 
 const GLCanvas = ({ coupons }) => {
 	const canvasRef = useRef(null);
@@ -40,18 +40,28 @@ const GLCanvas = ({ coupons }) => {
 		for (let i = 0; i < num; i++) {
 			const angle = Math.random() * Math.PI * 2;
 			const rotation = Math.random() * Math.PI * 2;
+			const deviation = Math.random() * 0.5;
 
 			const index = (bufferIndex + i) % BUFFER_SIZE;
 
 			const spriteX = Math.floor(Math.random() * 3);
 			const spriteY = Math.floor(Math.random() * 2);
 
-			attrBuffer[index * GL_OBJECT_SIZE] = Math.sin(angle) * COUPON_SPEED;
-			attrBuffer[index * GL_OBJECT_SIZE + 1] = Math.cos(angle) * COUPON_SPEED;
+			const r = Math.random();
+			const g = Math.random();
+			const b = Math.random();
+
+			attrBuffer[index * GL_OBJECT_SIZE] =
+				Math.sin(angle) * COUPON_SPEED + deviation;
+			attrBuffer[index * GL_OBJECT_SIZE + 1] =
+				Math.cos(angle) * COUPON_SPEED + deviation;
 			attrBuffer[index * GL_OBJECT_SIZE + 2] = spriteX;
 			attrBuffer[index * GL_OBJECT_SIZE + 3] = spriteY;
 			attrBuffer[index * GL_OBJECT_SIZE + 4] = rotation;
 			attrBuffer[index * GL_OBJECT_SIZE + 5] = time;
+			attrBuffer[index * GL_OBJECT_SIZE + 6] = r;
+			attrBuffer[index * GL_OBJECT_SIZE + 7] = g;
+			attrBuffer[index * GL_OBJECT_SIZE + 7] = b;
 		}
 
 		setBufferIndex((bufferIndex + num) % BUFFER_SIZE);
@@ -68,6 +78,7 @@ const GLCanvas = ({ coupons }) => {
 		var spriteLocation = gl.ctx.getAttribLocation(program, 'a_sprite');
 		var rotLocation = gl.ctx.getAttribLocation(program, 'a_rot');
 		var startTimeLocation = gl.ctx.getAttribLocation(program, 'a_start_time');
+		var colorLocation = gl.ctx.getAttribLocation(program, 'a_color');
 
 		var timeLocation = gl.ctx.getUniformLocation(program, 'u_time');
 		const texLocation = gl.ctx.getUniformLocation(program, 'u_tex');
@@ -95,6 +106,7 @@ const GLCanvas = ({ coupons }) => {
 		gl.ctx.enableVertexAttribArray(spriteLocation);
 		gl.ctx.enableVertexAttribArray(rotLocation);
 		gl.ctx.enableVertexAttribArray(startTimeLocation);
+		gl.ctx.enableVertexAttribArray(colorLocation);
 		// Bind the position buffer.
 		gl.ctx.bindBuffer(gl.ctx.ARRAY_BUFFER, attrBuffer);
 
@@ -115,6 +127,8 @@ const GLCanvas = ({ coupons }) => {
 			stride,
 			20
 		);
+
+		gl.ctx.vertexAttribPointer(colorLocation, 3, type, normalize, stride, 24);
 
 		//randomizeVelocities();
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import SimpleButton from './simple-button';
 import GlCanvas from './glcanvas';
+import {connect} from "react-redux";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -48,7 +49,13 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const ClickButton = () => {
+const mapStateToProps = state => {
+	return {
+		upgrades: state.UpgradesReducer.upgrades
+	};
+};
+
+const ClickButton = ({ upgrades }) => {
 	const classes = useStyles();
 
 	return (
@@ -59,4 +66,4 @@ const ClickButton = () => {
 	);
 };
 
-export default ClickButton;
+export default connect(mapStateToProps)(ClickButton);

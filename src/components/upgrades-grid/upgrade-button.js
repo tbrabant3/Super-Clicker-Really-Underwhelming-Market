@@ -2,7 +2,7 @@ import { addUpgrade, subtractCouponAmount } from '../../redux/actions';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import * as Upgrades from '../../constants/upgrades';
 import { Snackbar } from '@material-ui/core';

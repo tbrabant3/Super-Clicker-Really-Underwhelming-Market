@@ -9,7 +9,7 @@ import CouponCounter from './coupon-counter';
 const useStyles = makeStyles(theme => ({
 	root: {
 		minWidth: theme.spacing(10),
-		minHeight: theme.spacing(71)
+		minHeight: theme.spacing(79)
 	}
 }));
 

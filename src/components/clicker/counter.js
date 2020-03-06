@@ -7,8 +7,10 @@ const mapStateToProps = state => ({
 	coupons: state.CouponsReducer.coupons
 });
 
-const Counter = ({coupons}) => (<Grid container item justify={'center'} xs={12}>
-<Typography variant={'h5'}>{coupons}</Typography>
-</Grid>);
+const Counter = ({ coupons }) => (
+	<Grid container item justify={'center'} xs={12}>
+		<Typography variant={'h5'}>{coupons}</Typography>
+	</Grid>
+);
 
 export default connect(mapStateToProps)(Counter);

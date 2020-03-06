@@ -48,12 +48,12 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const ClickButton = ({ onClick }) => {
+const ClickButton = () => {
 	const classes = useStyles();
 
 	return (
 		<div className={classes.root}>
-			<SimpleButton onClick={onClick} />
+			<SimpleButton />
 			<GlCanvas></GlCanvas>
 		</div>
 	);

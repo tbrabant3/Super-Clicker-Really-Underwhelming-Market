@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import SimpleButton from './simple-button';
 import GlCanvas from './glcanvas';
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
+import * as Constants from '../../constants/upgrades';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -10,6 +11,14 @@ const useStyles = makeStyles(theme => ({
 		flexWrap: 'wrap',
 		minWidth: theme.spacing(20),
 		backgroundImage: 'url(/desk1background.png)',
+		height: theme.spacing(65),
+		width: theme.spacing(61)
+	},
+	store: {
+		display: 'flex',
+		flexWrap: 'wrap',
+		minWidth: theme.spacing(20),
+		backgroundImage: 'url(/murdermart-background.png)',
 		height: theme.spacing(65),
 		width: theme.spacing(61)
 	},
@@ -58,8 +67,12 @@ const mapStateToProps = state => {
 const ClickButton = ({ upgrades }) => {
 	const classes = useStyles();
 
+	const shouldShowMurderMart = upgrades[Constants.UPGRADE_COUPON_STORE] >= 1;
+
+	const correctClass = shouldShowMurderMart ? classes.store : classes.root;
+
 	return (
-		<div className={classes.root}>
+		<div className={correctClass}>
 			<SimpleButton />
 			<GlCanvas></GlCanvas>
 		</div>

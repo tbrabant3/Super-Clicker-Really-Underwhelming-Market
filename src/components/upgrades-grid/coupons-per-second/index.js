@@ -1,12 +1,11 @@
 import UpgradeButton from '../upgrade-button';
 import * as Constants from '../../../constants/upgrades';
 import Grid from '@material-ui/core/Grid';
-import React, {Fragment, useEffect, useState} from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { COUPONS_PER_SECOND_SECTION_MINIMUM } from '../../../constants/upgrades';
 import { connect } from 'react-redux';
-import { COUPONS_PER_CLICK_SECTION_MINIMUM } from '../../../constants/upgrades';
 
 const useStyles = makeStyles(theme => ({
 	root: {

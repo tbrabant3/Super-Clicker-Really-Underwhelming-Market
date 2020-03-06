@@ -1,10 +1,12 @@
-import image from '../../images/desk1foreground.png';
+import imageShack from '../../images/desk1foreground.png';
+import imageMurderMart from '../../images/murdermart-forground.png';
 import Button from '@material-ui/core/Button';
 import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import * as Upgrades from '../../constants/upgrades';
 import { addCouponAmount } from '../../redux/actions';
 import { connect } from 'react-redux';
+import {UPGRADE_COUPON_STORE} from "../../constants/upgrades";
 
 const mapStateToProps = state => {
 	return {
@@ -16,7 +18,8 @@ const mapStateToProps = state => {
 		cerem: state.UpgradesReducer.upgrades[Upgrades.UPGRADE_CEREMONIAL_SCISSORS],
 		magic:
 			state.UpgradesReducer.upgrades[Upgrades.UPGRADE_SLIGHT_MAGIC_SCISSORS],
-		mythic: state.UpgradesReducer.upgrades[Upgrades.UPGRADE_MYTHICAL_SCISSORS]
+		mythic: state.UpgradesReducer.upgrades[Upgrades.UPGRADE_MYTHICAL_SCISSORS],
+		upgrades: state.UpgradesReducer.upgrades
 	};
 };
 
@@ -64,7 +67,8 @@ const SimpleButton = ({
 	indus,
 	cerem,
 	magic,
-	mythic
+	mythic,
+	upgrades
 }) => {
 	const classes = useStyles();
 
@@ -103,6 +107,10 @@ const SimpleButton = ({
 	const incrementCounter = () =>
 		dispatch(addCouponAmount({ amount: CouponsToAdd }));
 
+	const shouldShowMurderMart = upgrades[UPGRADE_COUPON_STORE] >= 1;
+
+	const correctImage = shouldShowMurderMart ? imageMurderMart : imageShack;
+
 	return (
 		<Fragment>
 			<div>
@@ -112,7 +120,7 @@ const SimpleButton = ({
 					className={classes.image}
 					onClick={incrementCounter}
 				>
-					<img src={image} className={classes.imageSrc} alt={'desk'} />
+					<img src={correctImage} className={classes.imageSrc} alt={'desk'} />
 				</Button>
 			</div>
 		</Fragment>

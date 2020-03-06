@@ -37,6 +37,7 @@ const GLCanvas = ({ coupons }) => {
 	}, []);
 	const COUPON_SPEED = 0.9;
 	const spawn = num => {
+		num = Math.min(num, BUFFER_SIZE / 3);
 		for (let i = 0; i < num; i++) {
 			const angle = Math.random() * Math.PI * 2;
 			const rotation = Math.random() * Math.PI * 2;

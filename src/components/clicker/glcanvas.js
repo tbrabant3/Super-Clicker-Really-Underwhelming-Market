@@ -7,18 +7,25 @@ const mapStateToProps = state => ({
 	coupons: state.CouponsReducer.coupons
 });
 
+const BUFFER_SIZE = 400;
+const GL_OBJECT_SIZE = 6;
+
 const GLCanvas = ({ coupons }) => {
 	const canvasRef = useRef(null);
 
-	const attrBuffer = useMemo(() => new Float32Array(600), []);
-	const velocities = useMemo(() => new Float32Array(400), []);
+	const attrBuffer = useMemo(
+		() => new Float32Array(BUFFER_SIZE * GL_OBJECT_SIZE),
+		[]
+	);
 	let gl = null;
 
 	const [lastVal, setLastVal] = useState(coupons);
 	const [bufferIndex, setBufferIndex] = useState(0);
+	const [time, setTime] = useState(0);
 
 	useEffect(() => {
-		spawn(coupons-lastVal);
+		const diff = coupons - lastVal;
+		if (diff > 0) spawn(diff, time);
 		setLastVal(coupons);
 	}, [coupons]);
 	useEffect(() => {
@@ -28,37 +35,39 @@ const GLCanvas = ({ coupons }) => {
 			main();
 		});
 	}, []);
-	const COUPON_SPEED = 0.03;
+	const COUPON_SPEED = 0.9;
 	const spawn = num => {
 		for (let i = 0; i < num; i++) {
 			const angle = Math.random() * Math.PI * 2;
-			
-			const index = (bufferIndex+i) % 200;
-			
-			attrBuffer[index * 3] = 0;
-			attrBuffer[index * 3 + 1] = 0;
-			attrBuffer[index * 3 + 2] = angle;
+			const rotation = Math.random() * Math.PI * 2;
 
-			velocities[index * 2] = Math.sin(angle) * COUPON_SPEED;
-			velocities[index * 2 + 1] = Math.cos(angle) * COUPON_SPEED;
+			const index = (bufferIndex + i) % BUFFER_SIZE;
+
+			const spriteX = Math.floor(Math.random() * 3);
+			const spriteY = Math.floor(Math.random() * 2);
+
+			attrBuffer[index * GL_OBJECT_SIZE] = Math.sin(angle) * COUPON_SPEED;
+			attrBuffer[index * GL_OBJECT_SIZE + 1] = Math.cos(angle) * COUPON_SPEED;
+			attrBuffer[index * GL_OBJECT_SIZE + 2] = spriteX;
+			attrBuffer[index * GL_OBJECT_SIZE + 3] = spriteY;
+			attrBuffer[index * GL_OBJECT_SIZE + 4] = rotation;
+			attrBuffer[index * GL_OBJECT_SIZE + 5] = time;
 		}
-		setBufferIndex((bufferIndex+num) % 200);
+
+		setBufferIndex((bufferIndex + num) % BUFFER_SIZE);
 	};
 
 	function setGeometry(gl) {
-		for (let i = 0; i < 600; i += 3) {
-			attrBuffer[i] += velocities[i];
-			attrBuffer[i + 1] += velocities[i + 1];
-		}
-
 		gl.bufferData(gl.ARRAY_BUFFER, attrBuffer, gl.STATIC_DRAW);
 	}
 
 	function main() {
 		var program = gl.default;
 		// look up where the vertex data needs to go.
-		var positionLocation = gl.ctx.getAttribLocation(program, 'a_position');
+		var velocityLocation = gl.ctx.getAttribLocation(program, 'a_velocity');
+		var spriteLocation = gl.ctx.getAttribLocation(program, 'a_sprite');
 		var rotLocation = gl.ctx.getAttribLocation(program, 'a_rot');
+		var startTimeLocation = gl.ctx.getAttribLocation(program, 'a_start_time');
 
 		var timeLocation = gl.ctx.getUniformLocation(program, 'u_time');
 		const texLocation = gl.ctx.getUniformLocation(program, 'u_tex');
@@ -76,26 +85,36 @@ const GLCanvas = ({ coupons }) => {
 		// Tell it to use our program (pair of shaders)
 		gl.ctx.useProgram(program);
 
-		const texture = loadTexture(gl.ctx, '/couponcutout.png');
+		const texture = loadTexture(gl.ctx, '/couponspritesheet.png');
 
 		gl.ctx.activeTexture(gl.ctx.TEXTURE0);
 		gl.ctx.bindTexture(gl.ctx.TEXTURE_2D, texture);
 		gl.ctx.uniform1i(texLocation, 0);
 
-		gl.ctx.enableVertexAttribArray(positionLocation);
+		gl.ctx.enableVertexAttribArray(velocityLocation);
+		gl.ctx.enableVertexAttribArray(spriteLocation);
 		gl.ctx.enableVertexAttribArray(rotLocation);
+		gl.ctx.enableVertexAttribArray(startTimeLocation);
 		// Bind the position buffer.
 		gl.ctx.bindBuffer(gl.ctx.ARRAY_BUFFER, attrBuffer);
 
-		var size = 2; // 2 components per iteration
 		var type = gl.ctx.FLOAT; // the data is 32bit floats
 		var normalize = false; // don't normalize the data
-		var stride = 12; // 0 = move forward size * sizeof(type) each iteration to get the next position
+		var stride = GL_OBJECT_SIZE * 4;
 
-		gl.ctx.vertexAttribPointer(positionLocation, size, type, normalize, stride, 0);
-
+		gl.ctx.vertexAttribPointer(velocityLocation, 2, type, normalize, stride, 0);
+		gl.ctx.vertexAttribPointer(spriteLocation, 2, type, normalize, stride, 8);
 		// Tell the attribute how to get data out of rot
-		gl.ctx.vertexAttribPointer(rotLocation, 1, type, normalize, stride, 8);
+		gl.ctx.vertexAttribPointer(rotLocation, 1, type, normalize, stride, 16);
+
+		gl.ctx.vertexAttribPointer(
+			startTimeLocation,
+			1,
+			type,
+			normalize,
+			stride,
+			20
+		);
 
 		//randomizeVelocities();
 
@@ -109,8 +128,10 @@ const GLCanvas = ({ coupons }) => {
 			gl.resize();
 
 			gl.ctx.uniform1f(timeLocation, timeStamp / 1000);
+			setTime(timeStamp / 1000);
+
 			setGeometry(gl.ctx);
-			gl.ctx.drawArrays(gl.ctx.POINTS, 0, 200);
+			gl.ctx.drawArrays(gl.ctx.POINTS, 0, BUFFER_SIZE);
 
 			requestAnimationFrame(drawScene);
 		}

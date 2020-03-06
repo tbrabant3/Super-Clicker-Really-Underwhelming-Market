@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 	};
 };
 
-const UpgradeButton = ({ dispatch, coupons, className, name, upgradeName }) => {
+const UpgradeButton = ({ dispatch, coupons, className, name, upgradeName, upgradeCost }) => {
 	const upgradeAmount = COUPON_UPGRADE_COST_DICTIONARY[upgradeName];
 
 	const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -43,7 +43,7 @@ const UpgradeButton = ({ dispatch, coupons, className, name, upgradeName }) => {
 				<Button onClick={addNewUpgradeIfEnoughCoupons}>
 					<Paper className={className}>{name}</Paper>
 				</Button>
-				<Typography variant={'5'}>{'test'}</Typography>
+				<Typography variant={'5'}>{upgradeCost}</Typography>
 			</Grid>
 			<Snackbar
 				open={snackbarOpen}

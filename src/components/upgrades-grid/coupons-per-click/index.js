@@ -20,10 +20,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const mapStateToProps = state => ({
-	coupons: state.CouponsReducer.coupons
+	coupons: state.CouponsReducer.coupons,
+	upgrades: state.UpgradesReducer.upgrades
 });
 
-const CouponsPerClick = ({ coupons }) => {
+const CouponsPerClick = ({ coupons, upgrades }) => {
 	const classes = useStyles();
 
 	const shouldShowCouponsPerClick = coupons > COUPONS_PER_CLICK_SECTION_MINIMUM;
@@ -43,43 +44,43 @@ const CouponsPerClick = ({ coupons }) => {
 							className={classes.paper}
 							name={'Rusty Scissors'}
 							upgradeName={Constants.UPGRADE_RUSTY_SCISSORS}
-							upgradeCost={Constants.UPGRADE_RUSTY_SCISSORS_COST}
+							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_RUSTY_SCISSORS]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Good Scissors'}
 							upgradeName={Constants.UPGRADE_GOOD_SCISSORS}
-							upgradeCost={Constants.UPGRADE_GOOD_SCISSORS_COST}
+							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_GOOD_SCISSORS]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Ambidextrous Scissors'}
 							upgradeName={Constants.UPGRADE_AMBIDEXTROUS_SCISSORS}
-							upgradeCost={Constants.UPGRADE_AMBIDEXTROUS_SCISSORS_COST}
+							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_AMBIDEXTROUS_SCISSORS]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Industrial Strength Scissors'}
 							upgradeName={Constants.UPGRADE_INDUSTRIAL_SCISSORS}
-							upgradeCost={Constants.UPGRADE_INDUSTRIAL_SCISSORS_COST}
+							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_INDUSTRIAL_SCISSORS]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Giant Ceremonial Scissors'}
 							upgradeName={Constants.UPGRADE_CEREMONIAL_SCISSORS}
-							upgradeCost={Constants.UPGRADE_CEREMONIAL_SCISSORS_COST}
+							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_CEREMONIAL_SCISSORS]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Slightly Magical Scissors'}
 							upgradeName={Constants.UPGRADE_SLIGHT_MAGIC_SCISSORS}
-							upgradeCost={Constants.UPGRADE_SLIGHT_MAGIC_SCISSORS_COST}
+							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_SLIGHT_MAGIC_SCISSORS]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Mythical Scissors'}
 							upgradeName={Constants.UPGRADE_MYTHICAL_SCISSORS}
-							upgradeCost={Constants.UPGRADE_MYTHICAL_SCISSORS_COST}
+							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_MYTHICAL_SCISSORS]}
 						/>
 					</Grid>
 				</Fragment>

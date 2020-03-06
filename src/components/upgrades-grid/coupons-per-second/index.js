@@ -46,37 +46,37 @@ const CouponsPerSecond = ({ coupons }) => {
 							className={classes.paper}
 							name={'Coupon Book'}
 							upgradeName={Constants.UPGRADE_COUPON_BOOK}
-							upgradeCost={Constants.UPGRADE_COUPON_BOOK_COST}
+							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_COUPON_BOOK]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Coupon Stamp'}
 							upgradeName={Constants.UPGRADE_COUPON_STAMP}
-							upgradeCost={Constants.UPGRADE_COUPON_STAMP_COST}
+							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_COUPON_STAMP]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Coupon Printer'}
 							upgradeName={Constants.UPGRADE_COUPON_PRINTER}
-							upgradeCost={Constants.UPGRADE_COUPON_PRINTER_COST}
+							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_COUPON_PRINTER]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Coupon Store'}
 							upgradeName={Constants.UPGRADE_COUPON_STORE}
-							upgradeCost={Constants.UPGRADE_COUPON_STORE_COST}
+							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_COUPON_STORE]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Coupon Factory'}
 							upgradeName={Constants.UPGRADE_COUPON_FACTORY}
-							upgradeCost={Constants.UPGRADE_COUPON_FACTORY_COST}
+							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_COUPON_FACTORY]}
 						/>
 						<UpgradeButton
 							className={classes.paper}
 							name={'Coupon Corporation'}
 							upgradeName={Constants.UPGRADE_COUPON_CORPORATION}
-							upgradeCost={Constants.UPGRADE_COUPON_CORPORATION_COST}
+							upgradeCost={Constants.COUPON_UPGRADE_COST_DICTIONARY[Constants.UPGRADE_COUPON_CORPORATION]}
 						/>
 					</Grid>
 				</Fragment>

@@ -1,3 +1,8 @@
+## About
+
+This is an idle clicker game, where your goal is to get the most deals possible! Scavenge around your desk to find your first coupon,
+then keep on going!
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

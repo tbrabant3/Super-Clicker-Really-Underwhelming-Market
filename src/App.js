@@ -15,7 +15,7 @@ const theme = createMuiTheme({
 		type: 'dark'
 	},
 	typography: {
-		fontFamily: "Bad-Handwriting"
+		fontFamily: 'Bad-Handwriting'
 	}
 });
 

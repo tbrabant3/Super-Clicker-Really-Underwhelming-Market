@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Header from '../../components/header';
+import Footer from '../../components/footer';
 import Upgrades from '../upgrades';
 import CountIncrease from '../../components/upgrades-per-second';
 import Modal from '@material-ui/core/Modal';
@@ -33,6 +34,7 @@ const Home = () => {
 			<Header />
 			<CountIncrease />
 			<Upgrades />
+			<Footer></Footer>
 			<Modal
 				aria-labelledby="simple-modal-title"
 				aria-describedby="simple-modal-description"

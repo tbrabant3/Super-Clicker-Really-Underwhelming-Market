@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Testing Should Render Header 1`] = `
+<header
+  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+>
+  <div
+    className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+  >
+    <h6
+      className="MuiTypography-root MuiTypography-h6"
+    >
+      SUPER CLICKER REALLY UNDERWHELMING MARKET
+    </h6>
+    <span
+      className="MuiSwitch-root"
+    >
+      <span
+        aria-disabled={false}
+        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-86 MuiSwitch-switchBase MuiSwitch-colorSecondary PrivateSwitchBase-checked-87 Mui-checked"
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={null}
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <input
+            checked={true}
+            className="PrivateSwitchBase-input-89 MuiSwitch-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <span
+            className="MuiSwitch-thumb"
+          />
+        </span>
+      </span>
+      <span
+        className="MuiSwitch-track"
+      />
+    </span>
+  </div>
+</header>
+`;

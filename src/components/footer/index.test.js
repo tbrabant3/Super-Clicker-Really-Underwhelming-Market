@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Footer from './index';
-import GitHubButton from './githubButton';
-import CreditsButton from './creditsButton';
-import AboutButton from './aboutButton';
+import GithubButton from './GithubButton';
 import { mount } from 'enzyme';
 import { Button, Modal } from '@material-ui/core';
+import AboutButton from '../AboutButton';
+import CreditsButton from '../CreditsButton';
 
 describe('Footer Testing', () => {
 	const { open } = window;
@@ -19,14 +19,14 @@ describe('Footer Testing', () => {
 		window.open = open;
 	});
 
-	test('Should Render Footer', () => {
+	it('Should Render Footer', () => {
 		const component = renderer.create(<Footer />);
 		const tree = component.toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 
-	test('Should Load Github Page', () => {
-		const wrapper = mount(<GitHubButton />);
+	it('Should Load Github Page', () => {
+		const wrapper = mount(<GithubButton />);
 		const githubButton = wrapper.find(Button);
 		const githubModal = wrapper.find(Modal);
 		expect(githubModal.prop('open')).toBe(false);
@@ -65,5 +65,23 @@ describe('Footer Testing', () => {
 			'https://github.com/tbrabant3/Super-Clicker-Really-Underwhelming-Market',
 			'_blank'
 		);
+	});
+
+	it('Should Render the About Modal', () => {
+		const wrapper = mount(<AboutButton />);
+		const aboutButton = wrapper.find(Button);
+		const aboutModal = wrapper.find(Modal);
+		expect(aboutModal.prop('open')).toBe(false);
+		aboutButton.simulate('click');
+		expect(aboutModal.prop('open')).toBe(true);
+	});
+
+	it('Should Render the Credits Modal', () => {
+		const wrapper = mount(<CreditsButton />);
+		const creditsButton = wrapper.find(Button);
+		const creditsModal = wrapper.find(Modal);
+		expect(creditsModal.prop('open')).toBe(false);
+		creditsButton.simulate('click');
+		expect(creditsModal.prop('open')).toBe(true);
 	});
 });

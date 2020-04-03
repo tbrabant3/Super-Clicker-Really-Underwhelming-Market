@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import GitHubButton from './githubButton';
+import GithubButton from './GithubButton';
 import AboutButton from '../AboutButton';
 import CreditsButton from '../CreditsButton';
 
@@ -10,7 +10,7 @@ const Footer = ({ children }) => {
 	return (
 		<Fragment>
 			{children}
-			<GitHubButton />
+			<GithubButton />
 			<AboutButton />
 			<CreditsButton />
 		</Fragment>

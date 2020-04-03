@@ -5,7 +5,7 @@ import { Button, Modal } from '@material-ui/core';
 /**
  * @type {React.FC<>}
  */
-const GitHubButton = () => {
+const GithubButton = () => {
 	const [open, setOpen] = useState(false);
 	const toggle = () => setOpen(!open);
 	/**
@@ -39,4 +39,4 @@ const GitHubButton = () => {
 	);
 };
 
-export default GitHubButton;
+export default GithubButton;

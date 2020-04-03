@@ -2,7 +2,7 @@ import React from 'react';
 import { createMuiTheme, CssBaseline } from '@material-ui/core';
 import Home from '../home';
 import { ThemeProvider } from '@material-ui/styles';
-import { useSelector } from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 
 const lightTheme = createMuiTheme({
 	palette: {
@@ -22,6 +22,10 @@ const darkTheme = createMuiTheme({
 	}
 });
 
+const mapStateToProps = state => ({
+	headerData: state.ThemeReducer.theme
+});
+
 const Main = () => {
 	const headerData = useSelector(state => state.ThemeReducer.theme);
 
@@ -35,4 +39,4 @@ const Main = () => {
 	);
 };
 
-export default Main;
+export default connect(mapStateToProps)(Main);

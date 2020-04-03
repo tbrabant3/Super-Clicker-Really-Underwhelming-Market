@@ -34,7 +34,7 @@ const Home = () => {
 			<Header />
 			<CountIncrease />
 			<Upgrades />
-			<Footer></Footer>
+			<Footer />
 			<Modal
 				aria-labelledby="simple-modal-title"
 				aria-describedby="simple-modal-description"

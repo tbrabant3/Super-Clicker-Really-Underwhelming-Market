@@ -2,6 +2,8 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Footer from './index';
 import GitHubButton from './githubButton';
+import CreditsButton from './creditsButton';
+import AboutButton from './aboutButton';
 import { mount } from 'enzyme';
 import { Button, Modal } from '@material-ui/core';
 
@@ -29,7 +31,35 @@ describe('Footer Testing', () => {
 		const githubModal = wrapper.find(Modal);
 		expect(githubModal.prop('open')).toBe(false);
 		githubButton.simulate('click');
-		expect(githubModal.prop('open')).toBe(true);
+		// expect(githubModal.prop('open')).toBe(true);
+		expect(window.open).toHaveBeenCalled();
+		expect(window.open).toHaveBeenCalledWith(
+			'https://github.com/tbrabant3/Super-Clicker-Really-Underwhelming-Market',
+			'_blank'
+		);
+	});
+
+	test('Should Open Credits Modal', () => {
+		const wrapper = mount(<CreditsButton />);
+		const githubButton = wrapper.find(Button);
+		const githubModal = wrapper.find(Modal);
+		expect(githubModal.prop('open')).toBe(false);
+		githubButton.simulate('click');
+		//expect(githubModal.prop('open')).toBe(true);
+		expect(window.open).toHaveBeenCalled();
+		expect(window.open).toHaveBeenCalledWith(
+			'https://github.com/tbrabant3/Super-Clicker-Really-Underwhelming-Market',
+			'_blank'
+		);
+	});
+
+	test('Should Open About Modal', () => {
+		const wrapper = mount(<AboutButton />);
+		const githubButton = wrapper.find(Button);
+		const githubModal = wrapper.find(Modal);
+		expect(githubModal.prop('open')).toBe(false);
+		githubButton.simulate('click');
+		//expect(githubModal.prop('open')).toBe(true);
 		expect(window.open).toHaveBeenCalled();
 		expect(window.open).toHaveBeenCalledWith(
 			'https://github.com/tbrabant3/Super-Clicker-Really-Underwhelming-Market',

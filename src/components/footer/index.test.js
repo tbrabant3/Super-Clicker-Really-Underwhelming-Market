@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Footer from './index';
+import GitHubButton from './githubButton';
 import { mount } from 'enzyme';
 import { Button } from '@material-ui/core';
 
@@ -23,7 +24,7 @@ describe('Footer Testing', () => {
 	});
 
 	test('Should Load Github Page', () => {
-		const wrapper = mount(<Footer />);
+		const wrapper = mount(<GitHubButton />);
 		const githubButton = wrapper.find(Button);
 
 		githubButton.simulate('click');

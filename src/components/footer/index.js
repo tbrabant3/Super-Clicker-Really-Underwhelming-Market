@@ -1,34 +1,26 @@
 import React, { Fragment } from 'react';
 import { GitHub } from '@material-ui/icons';
-import { Button, AppBar, Toolbar, use } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import GitHubButton from './githubButton';
 
 /**
  * @type {React.FC<React.PropsWithChildren<{}>>}
  */
 const Footer = ({ children }) => {
-	/**
-	 *
-	 * @param {React.MouseEvent<HTMLAnchorElement, MouseEvent>} e
-	 */
-	const onClick = e => {
-		window.open(
-			'https://github.com/tbrabant3/Super-Clicker-Really-Underwhelming-Market',
-			'_blank'
-		);
-	};
-
 	return (
 		<Fragment>
 			{children}
+			<GitHubButton />
+			<Button variant="contained" color="primary" size={'large'} title="About">
+				About
+			</Button>
 			<Button
 				variant="contained"
-				color="secondary"
-				startIcon={<GitHub />}
+				color="primary"
 				size={'large'}
-				title="Github"
-				onClick={onClick}
+				title="Credits"
 			>
-				Github
+				Credits
 			</Button>
 		</Fragment>
 	);

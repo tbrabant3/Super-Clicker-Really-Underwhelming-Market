@@ -28,38 +28,11 @@ describe('Footer Testing', () => {
 	it('Should Load Github Page', () => {
 		const wrapper = mount(<GithubButton />);
 		const githubButton = wrapper.find(Button);
-		const githubModal = wrapper.find(Modal);
-		expect(githubModal.prop('open')).toBe(false);
+		let modal = wrapper.find(Modal);
+		expect(modal.prop('open')).toBe(false);
 		githubButton.simulate('click');
-		// expect(githubModal.prop('open')).toBe(true);
-		expect(window.open).toHaveBeenCalled();
-		expect(window.open).toHaveBeenCalledWith(
-			'https://github.com/tbrabant3/Super-Clicker-Really-Underwhelming-Market',
-			'_blank'
-		);
-	});
-
-	test('Should Open Credits Modal', () => {
-		const wrapper = mount(<CreditsButton />);
-		const githubButton = wrapper.find(Button);
-		const githubModal = wrapper.find(Modal);
-		expect(githubModal.prop('open')).toBe(false);
-		githubButton.simulate('click');
-		//expect(githubModal.prop('open')).toBe(true);
-		expect(window.open).toHaveBeenCalled();
-		expect(window.open).toHaveBeenCalledWith(
-			'https://github.com/tbrabant3/Super-Clicker-Really-Underwhelming-Market',
-			'_blank'
-		);
-	});
-
-	test('Should Open About Modal', () => {
-		const wrapper = mount(<AboutButton />);
-		const githubButton = wrapper.find(Button);
-		const githubModal = wrapper.find(Modal);
-		expect(githubModal.prop('open')).toBe(false);
-		githubButton.simulate('click');
-		//expect(githubModal.prop('open')).toBe(true);
+		modal = wrapper.find(Modal);
+		expect(modal.prop('open')).toBe(true);
 		expect(window.open).toHaveBeenCalled();
 		expect(window.open).toHaveBeenCalledWith(
 			'https://github.com/tbrabant3/Super-Clicker-Really-Underwhelming-Market',
@@ -70,18 +43,26 @@ describe('Footer Testing', () => {
 	it('Should Render the About Modal', () => {
 		const wrapper = mount(<AboutButton />);
 		const aboutButton = wrapper.find(Button);
-		const aboutModal = wrapper.find(Modal);
-		expect(aboutModal.prop('open')).toBe(false);
+		let modal = wrapper.find(Modal);
+		expect(modal.prop('open')).toBe(false);
 		aboutButton.simulate('click');
-		expect(aboutModal.prop('open')).toBe(true);
+		modal = wrapper.find(Modal);
+		expect(modal.prop('open')).toBe(true);
+		aboutButton.simulate('click');
+		modal = wrapper.find(Modal);
+		expect(modal.prop('open')).toBe(false);
 	});
 
 	it('Should Render the Credits Modal', () => {
 		const wrapper = mount(<CreditsButton />);
 		const creditsButton = wrapper.find(Button);
-		const creditsModal = wrapper.find(Modal);
-		expect(creditsModal.prop('open')).toBe(false);
+		let modal = wrapper.find(Modal);
+		expect(modal.prop('open')).toBe(false);
 		creditsButton.simulate('click');
-		expect(creditsModal.prop('open')).toBe(true);
+		modal = wrapper.find(Modal);
+		expect(modal.prop('open')).toBe(true);
+		creditsButton.simulate('click');
+		modal = wrapper.find(Modal);
+		expect(modal.prop('open')).toBe(false);
 	});
 });

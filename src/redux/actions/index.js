@@ -4,7 +4,8 @@ import {
 	INCREMENT_COUPON_COUNT,
 	REMOVE_UPGRADE,
 	SUBTRACT_COUPON_AMOUNT,
-	SET_COUPONS_PER_SECOND
+	SET_COUPONS_PER_SECOND,
+	TOGGLE_LIGHT_DARK_THEME
 } from './actions';
 
 export const incrementCouponCount = () => ({
@@ -36,4 +37,8 @@ export const removeUpgrade = ({ upgrade, amount }) => ({
 export const setCouponsPerSecond = ({ amount }) => ({
 	type: SET_COUPONS_PER_SECOND,
 	amount
+});
+
+export const toggleLightDarkTheme = () => ({
+	type: TOGGLE_LIGHT_DARK_THEME
 });

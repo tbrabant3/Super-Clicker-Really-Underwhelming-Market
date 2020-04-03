@@ -41,19 +41,19 @@ describe('Footer Testing', () => {
 
 	it('Should Render the About Modal', () => {
 		const wrapper = mount(<AboutButton />);
-		const githubButton = wrapper.find(Button);
-		const githubModal = wrapper.find(Modal);
-		expect(githubModal.prop('open')).toBe(false);
-		githubButton.simulate('click');
-		expect(githubModal.prop('open')).toBe(true);
+		const aboutButton = wrapper.find(Button);
+		const aboutModal = wrapper.find(Modal);
+		expect(aboutModal.prop('open')).toBe(false);
+		aboutButton.simulate('click');
+		expect(aboutModal.prop('open')).toBe(true);
 	});
 
 	it('Should Render the Credits Modal', () => {
 		const wrapper = mount(<CreditsButton />);
-		const githubButton = wrapper.find(Button);
-		const githubModal = wrapper.find(Modal);
-		expect(githubModal.prop('open')).toBe(false);
-		githubButton.simulate('click');
-		expect(githubModal.prop('open')).toBe(true);
+		const creditsButton = wrapper.find(Button);
+		const creditsModal = wrapper.find(Modal);
+		expect(creditsModal.prop('open')).toBe(false);
+		creditsButton.simulate('click');
+		expect(creditsModal.prop('open')).toBe(true);
 	});
 });

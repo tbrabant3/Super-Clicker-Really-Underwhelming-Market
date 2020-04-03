@@ -4,17 +4,6 @@ import * as actions from '../../redux/actions';
 import * as types from '../../redux/actions/actions';
 
 describe('Redux Testing', () => {
-	const { open } = window;
-
-	beforeAll(() => {
-		delete window.open;
-		window.open = jest.fn();
-	});
-
-	afterAll(() => {
-		window.open = open;
-	});
-
 	it('should create a toggle light and dark theme action', () => {
 		const expectedAction = {
 			type: types.TOGGLE_LIGHT_DARK_THEME
@@ -30,5 +19,5 @@ describe('Redux Testing', () => {
 		).toEqual({
 			theme: 'light'
 		});
-	})
+	});
 });

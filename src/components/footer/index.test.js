@@ -5,16 +5,17 @@ import { mount } from 'enzyme';
 import { Button } from '@material-ui/core';
 
 describe('Footer Testing', () => {
-	const { assign } = document.location;
+	const { open } = window;
 
 	beforeAll(() => {
-		delete document.location.assign;
-		document.location.assign = jest.fn();
+		delete window.open;
+		window.open = jest.fn();
 	});
 
 	afterAll(() => {
-		document.location.assign = assign;
+		window.open = open;
 	});
+
 	test('Should Render Footer', () => {
 		const component = renderer.create(<Footer />);
 		const tree = component.toJSON();
@@ -27,6 +28,10 @@ describe('Footer Testing', () => {
 
 		githubButton.simulate('click');
 
-		expect(window.location.assign).toHaveBeenCalled();
+		expect(window.open).toHaveBeenCalled();
+		expect(window.open).toHaveBeenCalledWith(
+			'https://github.com/tbrabant3/Super-Clicker-Really-Underwhelming-Market',
+			'_blank'
+		);
 	});
 });

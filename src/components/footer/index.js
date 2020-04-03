@@ -7,14 +7,13 @@ import { Button, AppBar, Toolbar, use } from '@material-ui/core';
  */
 const Footer = ({ children }) => {
 	/**
-	 * React.MouseEvent<HTMLButtonElement, MouseEvent>
-	 * @param {*} e
-	 * @param {*} d
+	 *
+	 * @param {React.MouseEvent<HTMLAnchorElement, MouseEvent>} e
 	 */
-	const onClick = (e, d) => {
-		console.log('clicked');
-		document.location.assign(
-			'https://github.com/tbrabant3/Super-Clicker-Really-Underwhelming-Market'
+	const onClick = e => {
+		window.open(
+			'https://github.com/tbrabant3/Super-Clicker-Really-Underwhelming-Market',
+			'_blank'
 		);
 	};
 
